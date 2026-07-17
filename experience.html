@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Experience — LANHMAR</title>
+<link rel="icon" href="assets/img/favicon-lanhmar.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://docs.google.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,700&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="marquee">
+  <div class="marquee__track">
+    <span>EXPERIENCE <span class="accent">★</span> PORTFOLIO</span>
+    <span>LANHMAR <span class="accent">★</span> DIGITAL MARKETER</span>
+    <span>EXPERIENCE <span class="accent">★</span> PORTFOLIO</span>
+    <span>LANHMAR <span class="accent">★</span> DIGITAL MARKETER</span>
+    <span>EXPERIENCE <span class="accent">★</span> PORTFOLIO</span>
+    <span>LANHMAR <span class="accent">★</span> DIGITAL MARKETER</span>
+  </div>
+</div>
+
+<header class="site">
+  <div class="nav">
+    <div class="brand"><img src="assets/img/logo-lanhmar.png" alt="LANHMAR logo"></div>
+    <nav class="nav__links">
+      <a href="index.html"><span data-lc="vi">Giới thiệu</span><span data-lc="en">About Me</span></a>
+      <a href="experience.html"><span data-lc="vi">Kinh nghiệm</span><span data-lc="en">Experience</span></a>
+      <a href="projects.html"><span data-lc="vi">Dự án</span><span data-lc="en">Projects</span></a>
+      <a href="certificates.html"><span data-lc="vi">Chứng chỉ</span><span data-lc="en">Certificates</span></a>
+      <a href="contact.html"><span data-lc="vi">Liên hệ</span><span data-lc="en">Contact</span></a>
+    </nav>
+    <div class="lang-toggle">
+      <button data-lang="vi">VI</button>
+      <button data-lang="en">EN</button>
+    </div>
+  </div>
+</header>
+
+<section class="hero" style="padding-bottom:10px;">
+  <div class="wrap">
+    <span class="hero__badge">✦ <span data-lc="vi">Hành trình</span><span data-lc="en">Journey</span></span>
+    <h1 data-lc="vi">Kinh nghiệm làm việc</h1>
+    <h1 data-lc="en">Experience</h1>
+    <p class="hero__lead" data-lc="vi">Những vị trí và dự án mình đã đồng hành, cùng kết quả đạt được.</p>
+    <p class="hero__lead" data-lc="en">Roles and projects I've been part of, and the results they delivered.</p>
+    <img class="hero__corner-mascot" src="assets/img/mascot-work.jpg" alt="" aria-hidden="true">
+  </div>
+</section>
+
+<section class="torn-section">
+  <div class="wrap">
+    <div class="timeline" id="timeline"></div>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap">
+    <div>© 2026 Dương Thị Lan Anh — LANHMAR</div>
+    <div class="footer-right">
+      <div class="social-row" id="footer-social"></div>
+      <img class="footer-typo" src="assets/img/deco-portfolio-typo.png" alt="" aria-hidden="true">
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+async function render() {
+  const data = await LANHMAR.loadContent();
+  const lang = LANHMAR.getLang();
+  const t = (o,f) => LANHMAR.t(o,f);
+  const esc = LANHMAR.esc, safeUrl = LANHMAR.safeUrl;
+
+  // Centered vertical line with entries alternating left/right of it
+  // (H2 Global Media left, Thuận Ý Bakery right, ...) — .timeline-row just
+  // positions each .timeline-item on its side; .timeline-dot marks its spot
+  // on the center line. Collapses back to a single left-aligned column on
+  // narrow screens (see the .timeline media query in style.css), where
+  // alternating sides would just make the text harder to scan.
+  document.getElementById("timeline").innerHTML = data.experience.map((exp, i) => `
+    <div class="timeline-row timeline-row--${i % 2 === 0 ? "left" : "right"}">
+      <div class="timeline-dot" aria-hidden="true"></div>
+      <div class="timeline-item">
+        <span class="period">${esc(exp.period)}</span>
+        <div class="timeline-item__head">
+          ${exp.logo ? `<img class="timeline-item__logo" src="${esc(safeUrl(exp.logo))}" alt="${esc(t(exp,"org"))} logo" onerror="window.LANHMAR_imgFallback(this)">` : ""}
+          <div>
+            <h3>${esc(t(exp,"title"))}</h3>
+            <span class="org">${esc(t(exp,"org"))}</span>
+          </div>
+        </div>
+        ${exp.workImage ? `<img class="timeline-item__work" src="${esc(safeUrl(exp.workImage))}" alt="${esc(t(exp,"org"))}" onerror="window.LANHMAR_imgFallback(this)">` : ""}
+        ${(exp.context_vi || exp.context_en) ? `<p class="timeline-item__context">${esc(lang==="en"?(exp.context_en||exp.context_vi):(exp.context_vi||exp.context_en))}</p>` : ""}
+        <h4 data-lc="vi">Nhiệm vụ</h4><h4 data-lc="en">What I did</h4>
+        <ul>${(lang==="en"?exp.tasks_en:exp.tasks_vi).map(x=>`<li>${esc(x)}</li>`).join("")}</ul>
+        <h4 data-lc="vi">Thành tựu</h4><h4 data-lc="en">Achievements</h4>
+        <ul>${(lang==="en"?exp.achievements_en:exp.achievements_vi).map(x=>`<li>${esc(x)}</li>`).join("")}</ul>
+      </div>
+    </div>
+  `).join("");
+
+  const social = [];
+  if (data.profile.facebook_url) social.push(`<a href="${esc(safeUrl(data.profile.facebook_url))}" target="_blank" rel="noopener">Facebook</a>`);
+  if (data.profile.linkedin_url) social.push(`<a href="${esc(safeUrl(data.profile.linkedin_url))}" target="_blank" rel="noopener">LinkedIn</a>`);
+  social.push(`<a href="mailto:${esc(data.profile.email)}">Email</a>`);
+  document.getElementById("footer-social").innerHTML = social.join("");
+}
+render();
+LANHMAR.onRender(render);
+</script>
+</body>
+</html>

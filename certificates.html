@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Certificate — LANHMAR</title>
+<link rel="icon" href="assets/img/favicon-lanhmar.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://docs.google.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,700&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="marquee">
+  <div class="marquee__track">
+    <span>CERTIFICATE <span class="accent">★</span> PORTFOLIO</span>
+    <span>LANHMAR <span class="accent">★</span> DIGITAL MARKETER</span>
+    <span>CERTIFICATE <span class="accent">★</span> PORTFOLIO</span>
+    <span>LANHMAR <span class="accent">★</span> DIGITAL MARKETER</span>
+    <span>CERTIFICATE <span class="accent">★</span> PORTFOLIO</span>
+    <span>LANHMAR <span class="accent">★</span> DIGITAL MARKETER</span>
+  </div>
+</div>
+
+<header class="site">
+  <div class="nav">
+    <div class="brand"><img src="assets/img/logo-lanhmar.png" alt="LANHMAR logo"></div>
+    <nav class="nav__links">
+      <a href="index.html"><span data-lc="vi">Giới thiệu</span><span data-lc="en">About Me</span></a>
+      <a href="experience.html"><span data-lc="vi">Kinh nghiệm</span><span data-lc="en">Experience</span></a>
+      <a href="projects.html"><span data-lc="vi">Dự án</span><span data-lc="en">Projects</span></a>
+      <a href="certificates.html"><span data-lc="vi">Chứng chỉ</span><span data-lc="en">Certificates</span></a>
+      <a href="contact.html"><span data-lc="vi">Liên hệ</span><span data-lc="en">Contact</span></a>
+    </nav>
+    <div class="lang-toggle">
+      <button data-lang="vi">VI</button>
+      <button data-lang="en">EN</button>
+    </div>
+  </div>
+</header>
+
+<section class="hero" style="padding-bottom:10px;">
+  <div class="wrap">
+    <span class="hero__badge">✦ <span data-lc="vi">Học & thực hành</span><span data-lc="en">Learning &amp; practice</span></span>
+    <h1 data-lc="vi">Chứng chỉ</h1>
+    <h1 data-lc="en">Certificates</h1>
+    <p class="hero__lead" data-lc="vi">Các khóa đào tạo và chứng chỉ chuyên môn đã tích lũy được — từ SEONGON, Canva đến Google — và sẽ tiếp tục cập nhật.</p>
+    <p class="hero__lead" data-lc="en">Professional courses and certifications earned along the way — from SEONGON to Canva and Google — updated as new ones come in.</p>
+    <img class="hero__corner-mascot" src="assets/img/mascot-idea.jpg" alt="" aria-hidden="true">
+  </div>
+</section>
+
+<section class="torn-section">
+  <div class="wrap">
+    <div id="cert-accordions"></div>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap">
+    <div>© 2026 Dương Thị Lan Anh — LANHMAR</div>
+    <div class="footer-right">
+      <div class="social-row" id="footer-social"></div>
+      <img class="footer-typo" src="assets/img/deco-portfolio-typo.png" alt="" aria-hidden="true">
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+// Per-org accordion header customization: the certifying partner's own
+// logo (shown on the right, replacing the earlier generic decorative crop)
+// + a brand color sampled straight from that logo (tints the header
+// background/border/chevron via the --accent CSS variable) + a
+// hand-written bilingual title. Any org not listed here (e.g. a brand-new
+// one Lan Anh adds herself via the Sheet, with no code change) still gets
+// its own accordion automatically, just with a generic "<org> (N chứng
+// chỉ)" title and the site's default purple accent — so nothing ever
+// silently disappears.
+const ORG_META = {
+  "SEONGON Academy": {
+    logo: "assets/img/logo-seongon.png",
+    color: "0, 74, 239", // SEONGON's own logo blue
+    title_vi: n => `Chứng chỉ Đào tạo SEONGON (${n} chứng chỉ)`,
+    title_en: n => `SEONGON Training Certificates (${n} certificate${n === 1 ? "" : "s"})`,
+  },
+  "Canva Academy for SMEs x Startup and Innovation Hub of Ho Chi Minh City": {
+    logo: "assets/img/logo-canva-academy.jpg",
+    color: "90, 78, 234", // Canva Academy badge's indigo-purple
+    title_vi: () => "Canva Academy for SMEs",
+    title_en: () => "Canva Academy for SMEs",
+  },
+  "Google for Education": {
+    logo: "assets/img/logo-google-education.png",
+    color: "66, 133, 244", // Google's own logo blue
+    title_vi: () => "Gemini Certified Student",
+    title_en: () => "Gemini Certified Student",
+  },
+};
+
+// Certificates are grouped by org name typed freely into the Sheet — if
+// Lan Anh types "seongon academy" on one row and "SEONGON Academy" on
+// another (or leaves stray extra spaces), a naive exact-string match would
+// silently split them into two separate accordions AND miss the ORG_META
+// lookup (no logo/brand color) for whichever casing wasn't the "canonical"
+// one. Normalize (trim + collapse whitespace + lowercase) before grouping
+// and before looking up ORG_META, so typos in casing/spacing never matter.
+const normOrg = s => (s || "").trim().replace(/\s+/g, " ").toLowerCase();
+const ORG_META_BY_NORM = new Map(Object.entries(ORG_META).map(([k, v]) => [normOrg(k), v]));
+
+async function render() {
+  const data = await LANHMAR.loadContent();
+  const lang = LANHMAR.getLang();
+  const t = (o,f) => LANHMAR.t(o,f);
+  const esc = LANHMAR.esc, safeUrl = LANHMAR.safeUrl;
+
+  const cardHTML = c => {
+    const captions = lang === "en" ? c.slideCaptions_en : c.slideCaptions_vi;
+    return `
+    <div class="card cert-card">
+      ${LANHMAR.buildCarousel(c.images, null, t(c,"name"), captions)}
+      <div class="cert-card__body">
+        <h3>${esc(t(c,"name"))}</h3>
+        <span class="tag tag--solid" style="margin-bottom:12px; display:inline-block;">${esc(c.org)}</span>
+        <div class="carousel-caption" style="font-size:14.5px;"></div>
+      </div>
+    </div>
+  `;
+  };
+
+  // Group certificates by org, preserving first-appearance order — every
+  // org gets its own collapsible accordion (same pattern for all of them),
+  // instead of singling SEONGON out into an accordion while the rest sit in
+  // a plain grid.
+  const container = document.getElementById("cert-accordions");
+  const groups = [];
+  const byOrg = new Map();
+  data.certificates.forEach(c => {
+    const org = (c.org || "").trim();
+    const key = normOrg(org);
+    if (!byOrg.has(key)) {
+      // Keep the first-seen casing for display/logo fallback purposes.
+      const g = { org, items: [] };
+      byOrg.set(key, g);
+      groups.push(g);
+    }
+    byOrg.get(key).items.push(c);
+  });
+
+  // Re-renders (language toggle, Sheet upgrade) rebuild every accordion's
+  // markup from scratch, so any group the visitor already had open would
+  // otherwise snap shut. Remember which org(s) were open beforehand and
+  // restore that state (instantly, no animation) after rebuilding.
+  const openOrgs = new Set();
+  container.querySelectorAll("[data-accordion].is-open").forEach(acc => {
+    if (acc.dataset.org) openOrgs.add(acc.dataset.org);
+  });
+
+  container.innerHTML = groups.map(g => {
+    const meta = ORG_META_BY_NORM.get(normOrg(g.org)) || {};
+    const n = g.items.length;
+    const title = lang === "en"
+      ? (meta.title_en ? meta.title_en(n) : `${g.org} (${n} certificate${n === 1 ? "" : "s"})`)
+      : (meta.title_vi ? meta.title_vi(n) : `${g.org} (${n} chứng chỉ)`);
+    const gridClass = n > 1 ? "grid grid--2" : "grid grid--1";
+    const accentStyle = meta.color ? ` style="--accent:${esc(meta.color)};"` : "";
+    return `
+    <div class="accordion" data-accordion data-org="${esc(g.org)}"${accentStyle}>
+      <button type="button" class="accordion__header" aria-expanded="false">
+        <span class="accordion__brand">
+          <span class="accordion__title">${esc(title)}</span>
+        </span>
+        ${meta.logo ? `<img class="accordion__deco" src="${esc(meta.logo)}" alt="${esc(g.org)} logo" onerror="window.LANHMAR_imgFallback(this)">` : ""}
+        <span class="accordion__chevron" aria-hidden="true">⌄</span>
+      </button>
+      <div class="accordion__panel">
+        <div class="accordion__panel-inner">
+          <div class="${gridClass}">${g.items.map(cardHTML).join("")}</div>
+        </div>
+      </div>
+    </div>`;
+  }).join("");
+
+  LANHMAR.wireCarousels(container);
+  LANHMAR.wireAccordions(document);
+
+  container.querySelectorAll("[data-accordion]").forEach(acc => {
+    if (!openOrgs.has(acc.dataset.org)) return;
+    const header = acc.querySelector(".accordion__header");
+    const panel = acc.querySelector(".accordion__panel");
+    acc.classList.add("is-open");
+    header.setAttribute("aria-expanded", "true");
+    panel.style.maxHeight = panel.scrollHeight + "px";
+  });
+
+  const social = [];
+  if (data.profile.facebook_url) social.push(`<a href="${esc(safeUrl(data.profile.facebook_url))}" target="_blank" rel="noopener">Facebook</a>`);
+  if (data.profile.linkedin_url) social.push(`<a href="${esc(safeUrl(data.profile.linkedin_url))}" target="_blank" rel="noopener">LinkedIn</a>`);
+  social.push(`<a href="mailto:${esc(data.profile.email)}">Email</a>`);
+  document.getElementById("footer-social").innerHTML = social.join("");
+}
+render();
+LANHMAR.onRender(render);
+</script>
+</body>
+</html>

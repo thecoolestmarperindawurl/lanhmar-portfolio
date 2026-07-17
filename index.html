@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LANHMAR — Dương Thị Lan Anh | Digital Marketer</title>
+<meta name="description" content="Portfolio cá nhân của Dương Thị Lan Anh (LANHMAR) — Digital Marketer.">
+<link rel="icon" href="assets/img/favicon-lanhmar.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://docs.google.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,700&display=swap">
+<!-- The banner below is almost always this bundled asset (Sheet/content.json
+     both point here by default), but it only gets assigned to <img> by JS
+     after loadContent() resolves — without a preload hint the browser would
+     otherwise wait for that JS+data round-trip before even starting the
+     image fetch, which is what made this hero banner feel slow to appear. -->
+<link rel="preload" as="image" href="assets/img/banner-hero.webp" fetchpriority="high">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="marquee">
+  <div class="marquee__track">
+    <span>LAN ANH <span class="accent">★</span> PORTFOLIO</span>
+    <span>LANHMAR <span class="accent">★</span> DIGITAL MARKETER</span>
+    <span>LAN ANH <span class="accent">★</span> PORTFOLIO</span>
+    <span>LANHMAR <span class="accent">★</span> DIGITAL MARKETER</span>
+    <span>LAN ANH <span class="accent">★</span> PORTFOLIO</span>
+    <span>LANHMAR <span class="accent">★</span> DIGITAL MARKETER</span>
+  </div>
+</div>
+
+<header class="site">
+  <div class="nav">
+    <div class="brand">
+      <img src="assets/img/logo-lanhmar.png" alt="LANHMAR logo">
+    </div>
+    <nav class="nav__links">
+      <a href="index.html"><span data-lc="vi">Giới thiệu</span><span data-lc="en">About Me</span></a>
+      <a href="experience.html"><span data-lc="vi">Kinh nghiệm</span><span data-lc="en">Experience</span></a>
+      <a href="projects.html"><span data-lc="vi">Dự án</span><span data-lc="en">Projects</span></a>
+      <a href="certificates.html"><span data-lc="vi">Chứng chỉ</span><span data-lc="en">Certificates</span></a>
+      <a href="contact.html"><span data-lc="vi">Liên hệ</span><span data-lc="en">Contact</span></a>
+    </nav>
+    <div class="lang-toggle">
+      <button data-lang="vi">VI</button>
+      <button data-lang="en">EN</button>
+    </div>
+  </div>
+</header>
+
+<section class="banner-strip" id="banner-strip">
+  <div class="banner-strip__frame">
+    <!-- src defaults to the bundled banner so the browser can start
+         fetching it immediately on parse, in parallel with the Sheet/JS
+         data race, instead of waiting for JS to set src after data loads
+         (that JS-gated delay was the actual cause of the slow-feeling
+         banner). script.js's render() overwrites src if the Sheet ever
+         provides a different banner — a no-op in the common case since
+         it's normally this same file, so the browser just reuses the
+         already-fetched image from cache. width/height reserve the exact
+         aspect ratio up front so nothing shifts once it paints. -->
+    <img id="banner-img" src="assets/img/banner-hero.webp" width="1920" height="600"
+         fetchpriority="high" alt="LANHMAR banner">
+    <span class="banner-badge banner-badge--dob" id="banner-dob-row">
+      <span data-lc="vi">Ngày sinh</span><span data-lc="en">Date of birth</span>: <span id="profile-dob"></span>
+    </span>
+    <span class="banner-badge banner-badge--mbti" id="banner-mbti-row">
+      MBTI: <span id="profile-mbti"></span>
+    </span>
+  </div>
+</section>
+
+<section class="hero">
+  <div class="wrap hero__grid">
+    <div>
+      <span class="hero__badge">✦ <span data-lc="vi">Digital Marketer</span><span data-lc="en">Digital Marketer</span></span>
+      <h1>
+        <span data-lc="vi">Xin chào, mình là</span><span data-lc="en">Hi, I'm</span>
+        <br><span class="script">Lan Anh</span>
+      </h1>
+      <p class="hero__lead" id="hero-line"></p>
+      <div class="btn-row">
+        <a class="btn btn--primary" href="projects.html">
+          <span data-lc="vi">Xem dự án</span><span data-lc="en">View projects</span>
+        </a>
+        <a class="btn btn--ghost" href="contact.html">
+          <span data-lc="vi">Liên hệ với mình</span><span data-lc="en">Get in touch</span>
+        </a>
+      </div>
+    </div>
+    <div class="hero__photo-wrap">
+      <img class="hero__mascot" src="assets/img/mascot-dance.jpg" alt="" aria-hidden="true">
+      <img class="hero__photo" src="assets/img/profile-photo.jpg" alt="Dương Thị Lan Anh" width="788" height="1400">
+    </div>
+  </div>
+</section>
+
+<section class="torn-section">
+  <div class="wrap">
+    <div class="section-title">
+      <span class="kicker" data-lc="vi">Giới thiệu</span><span class="kicker" data-lc="en">Introduction</span>
+      <h2 data-lc="vi">Về mình</h2>
+      <h2 data-lc="en">About Me</h2>
+    </div>
+    <div class="grid grid--2">
+      <div class="card">
+        <h3 data-lc="vi">Giới thiệu</h3><h3 data-lc="en">Bio</h3>
+        <p id="bio-text"></p>
+        <h3 data-lc="vi">Mục tiêu</h3><h3 data-lc="en">Goal</h3>
+        <p id="goal-text"></p>
+      </div>
+      <div class="card">
+        <h3 data-lc="vi">Học vấn</h3><h3 data-lc="en">Education</h3>
+        <p><strong id="edu-school"></strong><br>
+           <span id="edu-major"></span> · <span id="edu-years"></span> · GPA <span id="edu-gpa"></span></p>
+        <p id="edu-thesis" style="font-size:14.5px;"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="torn-section">
+  <div class="wrap">
+    <div class="section-title">
+      <span class="kicker" data-lc="vi">Năng lực</span><span class="kicker" data-lc="en">Capabilities</span>
+      <h2 data-lc="vi">Kỹ năng & Phần mềm</h2>
+      <h2 data-lc="en">Skills &amp; Software</h2>
+    </div>
+    <div class="grid grid--2">
+      <div class="card">
+        <h3 data-lc="vi">Kỹ năng</h3><h3 data-lc="en">Skills</h3>
+        <div class="tag-row" id="skills-list"></div>
+      </div>
+      <div class="card">
+        <h3 data-lc="vi">Phần mềm sử dụng</h3><h3 data-lc="en">Tools I use</h3>
+        <div id="software-list"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap">
+    <div>© 2026 Dương Thị Lan Anh — LANHMAR</div>
+    <div class="footer-right">
+      <div class="social-row" id="footer-social"></div>
+      <img class="footer-typo" src="assets/img/deco-portfolio-typo.png" alt="" aria-hidden="true">
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+async function render() {
+  const data = await LANHMAR.loadContent();
+  const lang = LANHMAR.getLang();
+  const t = (o,f) => LANHMAR.t(o,f);
+
+  document.getElementById("hero-line").textContent = t(data.profile, "heroLine");
+  document.getElementById("bio-text").textContent = t(data.profile, "bio");
+  document.getElementById("goal-text").textContent = t(data.profile, "goal");
+
+  const esc = LANHMAR.esc, safeUrl = LANHMAR.safeUrl;
+
+  const edu = data.profile.education;
+  document.getElementById("edu-school").textContent = t(edu, "school");
+  document.getElementById("edu-major").textContent = t(edu, "major");
+  document.getElementById("edu-years").textContent = edu.years;
+  document.getElementById("edu-gpa").textContent = edu.gpa;
+  document.getElementById("edu-thesis").textContent = t(edu, "thesis");
+
+  const dobRow = document.getElementById("banner-dob-row");
+  if (data.profile.dob) {
+    document.getElementById("profile-dob").textContent = data.profile.dob;
+    dobRow.style.display = "";
+  } else {
+    dobRow.style.display = "none";
+  }
+  const mbtiRow = document.getElementById("banner-mbti-row");
+  if (data.profile.mbti) {
+    document.getElementById("profile-mbti").textContent = data.profile.mbti;
+    mbtiRow.style.display = "";
+  } else {
+    mbtiRow.style.display = "none";
+  }
+
+  const bannerEl = document.getElementById("banner-img");
+  const bannerWrap = document.getElementById("banner-strip");
+  if (data.profile.banner) {
+    bannerEl.src = safeUrl(data.profile.banner);
+    bannerWrap.style.display = "";
+  } else {
+    bannerWrap.style.display = "none";
+  }
+
+  document.getElementById("skills-list").innerHTML = data.profile.skills
+    .map(s => `<span class="tag">${esc(lang === "en" ? s.en : s.vi)}</span>`).join("");
+
+  document.getElementById("software-list").innerHTML = data.profile.software
+    .map(g => `<p><strong>${esc(lang === "en" ? g.group_en : g.group_vi)}:</strong> ${g.items.map(esc).join(", ")}</p>`).join("");
+
+  const social = [];
+  if (data.profile.facebook_url) social.push(`<a href="${esc(safeUrl(data.profile.facebook_url))}" target="_blank" rel="noopener">Facebook</a>`);
+  if (data.profile.linkedin_url) social.push(`<a href="${esc(safeUrl(data.profile.linkedin_url))}" target="_blank" rel="noopener">LinkedIn</a>`);
+  social.push(`<a href="mailto:${esc(data.profile.email)}">Email</a>`);
+  document.getElementById("footer-social").innerHTML = social.join("");
+}
+render();
+LANHMAR.onRender(render);
+</script>
+</body>
+</html>

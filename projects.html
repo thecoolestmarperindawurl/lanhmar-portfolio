@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project — LANHMAR</title>
+<link rel="icon" href="assets/img/favicon-lanhmar.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://docs.google.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,700&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="marquee">
+  <div class="marquee__track">
+    <span>PROJECT <span class="accent">★</span> PORTFOLIO</span>
+    <span>LANHMAR <span class="accent">★</span> DIGITAL MARKETER</span>
+    <span>PROJECT <span class="accent">★</span> PORTFOLIO</span>
+    <span>LANHMAR <span class="accent">★</span> DIGITAL MARKETER</span>
+    <span>PROJECT <span class="accent">★</span> PORTFOLIO</span>
+    <span>LANHMAR <span class="accent">★</span> DIGITAL MARKETER</span>
+  </div>
+</div>
+
+<header class="site">
+  <div class="nav">
+    <div class="brand"><img src="assets/img/logo-lanhmar.png" alt="LANHMAR logo"></div>
+    <nav class="nav__links">
+      <a href="index.html"><span data-lc="vi">Giới thiệu</span><span data-lc="en">About Me</span></a>
+      <a href="experience.html"><span data-lc="vi">Kinh nghiệm</span><span data-lc="en">Experience</span></a>
+      <a href="projects.html"><span data-lc="vi">Dự án</span><span data-lc="en">Projects</span></a>
+      <a href="certificates.html"><span data-lc="vi">Chứng chỉ</span><span data-lc="en">Certificates</span></a>
+      <a href="contact.html"><span data-lc="vi">Liên hệ</span><span data-lc="en">Contact</span></a>
+    </nav>
+    <div class="lang-toggle">
+      <button data-lang="vi">VI</button>
+      <button data-lang="en">EN</button>
+    </div>
+  </div>
+</header>
+
+<section class="hero" style="padding-bottom:10px;">
+  <div class="wrap">
+    <span class="hero__badge">✦ <span data-lc="vi">Thư mục dự án</span><span data-lc="en">Project folders</span></span>
+    <h1 data-lc="vi">Dự án nổi bật</h1>
+    <h1 data-lc="en">Projects</h1>
+    <p class="hero__lead" data-lc="vi">8 mảng mình đã thực hành: Design, Edit, Performance, SEO, Account, E-Commerce, Planning, AI Agent.</p>
+    <p class="hero__lead" data-lc="en">8 areas of hands-on work: Design, Edit, Performance, SEO, Account, E-Commerce, Planning, AI Agent.</p>
+    <img class="hero__corner-mascot" src="assets/img/mascot-yeah.jpg" alt="" aria-hidden="true">
+    <img class="hero__corner-deco" src="assets/img/deco-folder.jpg" alt="" aria-hidden="true">
+  </div>
+</section>
+
+<section class="torn-section">
+  <div class="wrap">
+    <div class="grid grid--3" id="project-grid"></div>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap">
+    <div>© 2026 Dương Thị Lan Anh — LANHMAR</div>
+    <div class="footer-right">
+      <div class="social-row" id="footer-social"></div>
+      <img class="footer-typo" src="assets/img/deco-portfolio-typo.png" alt="" aria-hidden="true">
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+async function render() {
+  const data = await LANHMAR.loadContent();
+  const lang = LANHMAR.getLang();
+  const t = (o,f) => LANHMAR.t(o,f);
+  const esc = LANHMAR.esc, safeUrl = LANHMAR.safeUrl;
+
+  const canvaLabel = lang === "en" ? "View full plan (Canva)" : "Xem toàn bộ plan (Canva)";
+  const moreLabel = lang === "en" ? "See more" : "Xem thêm";
+  const lessLabel = lang === "en" ? "Show less" : "Thu gọn";
+  const problemLabel = lang === "en" ? "Brief" : "Đề bài";
+  const approachLabel = lang === "en" ? "Approach" : "Cách làm";
+  const resultLabel = lang === "en" ? "Result" : "Kết quả";
+
+  document.getElementById("project-grid").innerHTML = data.projects.map((p, i) => {
+    const slides = p.images && p.images.length ? p.images : (p.image ? [p.image] : []);
+    const captions = lang === "en" ? p.slideCaptions_en : p.slideCaptions_vi;
+    // "Đề bài: ... Cách làm: ... Sản phẩm/Kết quả: ..." typed as one Sheet
+    // cell gets split so Đề bài+Cách làm sit above the carousel (clamped,
+    // with a "Xem thêm" toggle if long) and Kết quả sits below it, on its
+    // own line — see parseBriefSections() in script.js.
+    const brief = LANHMAR.parseBriefSections(t(p, "brief"));
+    const briefLines = [];
+    if (brief.problem) briefLines.push(`<strong>${esc(problemLabel)}:</strong> ${esc(brief.problem)}`);
+    if (brief.approach) briefLines.push(`<strong>${esc(approachLabel)}:</strong> ${esc(brief.approach)}`);
+    const briefTopHTML = briefLines.join("<br><br>");
+    return `
+    <div class="folder-card">
+      <div class="folder-card__tab"><span class="num">0${i+1}</span> ${esc(t(p,"title"))}</div>
+      ${briefTopHTML ? `
+      <div class="folder-card__brief" data-brief>
+        <p class="folder-card__brief-text">${briefTopHTML}</p>
+        <button type="button" class="folder-card__brief-toggle" data-more-label="${esc(moreLabel)}" data-less-label="${esc(lessLabel)}">${esc(moreLabel)}</button>
+      </div>` : ""}
+      ${LANHMAR.buildCarousel(slides, p.videos, t(p,"title"), captions, p.canvaUrls, {overlay:true})}
+      <div class="folder-card__body">
+        ${p.canvaUrls && p.canvaUrls.length ? `<a class="btn btn--ghost carousel-plan-link" style="display:none;" target="_blank" rel="noopener">${esc(canvaLabel)}</a>` : ""}
+        ${brief.result ? `<p class="folder-card__result"><strong>${esc(resultLabel)}:</strong> ${esc(brief.result)}</p>` : ""}
+      </div>
+    </div>
+  `;
+  }).join("");
+  LANHMAR.wireCarousels(document.getElementById("project-grid"));
+  LANHMAR.wireBriefToggles(document.getElementById("project-grid"));
+
+  const social = [];
+  if (data.profile.facebook_url) social.push(`<a href="${esc(safeUrl(data.profile.facebook_url))}" target="_blank" rel="noopener">Facebook</a>`);
+  if (data.profile.linkedin_url) social.push(`<a href="${esc(safeUrl(data.profile.linkedin_url))}" target="_blank" rel="noopener">LinkedIn</a>`);
+  social.push(`<a href="mailto:${esc(data.profile.email)}">Email</a>`);
+  document.getElementById("footer-social").innerHTML = social.join("");
+}
+render();
+LANHMAR.onRender(render);
+</script>
+</body>
+</html>
