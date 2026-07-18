@@ -47,7 +47,15 @@
 }
 
 *{ box-sizing: border-box; }
-html{ scroll-behavior: smooth; }
+/* scroll-snap-type here only takes effect where a descendant declares
+   scroll-snap-align (currently just .proj-block, projects.html) — on every
+   other page there's nothing to snap to, so this is a no-op there. It's
+   what turns the sticky project stack from a slow bleed (the incoming
+   block's edge lingering mid-sentence over the covered one while a visitor
+   scrolls slowly) into a crisp "next project takes over" handoff: release
+   the scroll wheel/trackpad anywhere and the page settles on a fully
+   uncovered block, never on a half-covered one. */
+html{ scroll-behavior: smooth; scroll-snap-type: y mandatory; scroll-padding-top: var(--header-h); }
 body{
   margin:0;
   font-family: var(--font-body);
@@ -563,6 +571,75 @@ header.site{
 }
 .carousel__overlay .carousel-caption__list{ text-align:left; }
 .carousel__overlay .carousel__dots{ position:static; pointer-events:auto; }
+
+/* ---------- stacked project sections (projects.html) ----------
+   Each project block pins to the top of the viewport (position:sticky) as
+   the visitor scrolls. Because the blocks sit one after another in normal
+   document flow, the NEXT block's top edge naturally reaches top:0 and
+   visually "covers" whichever block is currently pinned underneath it —
+   that's the whole trick, no JS/scroll-listener needed for the
+   covering/uncovering itself, just sticky positioning + an opaque
+   background per block (scrolling back up un-pins the later block and
+   reveals the earlier one again, for free).
+   --header-h is measured in JS (LANHMAR.syncHeaderHeight(), script.js) so
+   each block pins exactly below the sticky header instead of guessing a
+   fixed pixel value — the header can grow a row taller on narrow widths,
+   where its nav links wrap.
+   Disabled below 900px (position:static): a pinned near-viewport-height
+   block fighting the page scroll while ALSO needing its own internal
+   scroll for a long brief/caption reads as broken on a small screen, not
+   fancy — mobile just gets the plain stacked list instead. */
+:root{ --header-h: 68px; }
+.proj-stack{ position:relative; z-index:1; }
+.proj-block{
+  position: sticky; top: var(--header-h);
+  min-height: calc(100vh - var(--header-h));
+  display:flex; align-items:center;
+  background: var(--paper);
+  box-shadow: 0 -20px 46px rgba(36,31,69,.18);
+  overflow:hidden;
+  scroll-snap-align: start;
+}
+.proj-block:nth-child(even){ background: var(--lav-100); }
+/* Header row (numbered badge + title + a full-width divider rule) sits
+   above the media/text columns — echoes the "numbered section list" this
+   layout was modeled on (each mảng reads as its own titled section, not
+   just an image with a caption). */
+.proj-block__head{
+  display:flex; align-items:center; gap:16px;
+  max-width: 1080px; margin:0 auto; width:100%; padding: 40px 24px 18px;
+}
+.proj-block__num{
+  flex-shrink:0; width:46px; height:46px; border-radius:50%;
+  background: var(--purple-deep); color:#fff;
+  display:flex; align-items:center; justify-content:center;
+  font-family: var(--font-display); font-weight:800; font-size:17px;
+  box-shadow: var(--shadow-soft);
+}
+.proj-block__title{
+  margin:0; font-size: clamp(22px, 3vw, 30px); text-transform:uppercase; letter-spacing:.02em;
+  padding-bottom:16px; border-bottom:2px solid var(--lav-300); flex:1;
+}
+.proj-block:nth-child(even) .proj-block__title{ border-bottom-color: var(--lav-400); }
+.proj-block__inner{
+  display:grid; grid-template-columns: 1.05fr 1fr; gap: 44px; align-items:center;
+  max-width: 1080px; margin:0 auto; width:100%; padding: 4px 24px 40px;
+}
+.proj-block__media{ border-radius: var(--radius); overflow:hidden; box-shadow: var(--shadow-soft); }
+.proj-block__media .carousel__slide img{ height: 380px; }
+.proj-block__text{
+  max-height: calc(100vh - var(--header-h) - 190px); overflow-y:auto; padding-right:6px;
+}
+.proj-block__brief p{ font-size:14.5px; line-height:1.7; color: var(--ink-soft); margin:0 0 14px; }
+.proj-block__brief strong{ color: var(--ink); }
+@media (max-width: 900px){
+  .proj-block{ position:static; min-height:auto; box-shadow:none; scroll-snap-align: none; }
+  .proj-block__head{ padding: 28px 20px 12px; gap:12px; }
+  .proj-block__num{ width:38px; height:38px; font-size:14px; }
+  .proj-block__inner{ grid-template-columns:1fr; padding: 4px 20px 32px; gap:20px; }
+  .proj-block__media .carousel__slide img{ height: 240px; }
+  .proj-block__text{ max-height:none; overflow-y:visible; }
+}
 
 /* ---------- experience timeline (centered line, alternating sides) ----------
    Desktop: a vertical line runs down the middle of .timeline; each
