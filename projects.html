@@ -53,7 +53,7 @@
   </div>
 </section>
 
-<section class="proj-stack" id="project-stack"></section>
+<section class="proj-list" id="project-stack"></section>
 
 <footer class="site">
   <div class="wrap">
@@ -80,40 +80,42 @@ async function render() {
 
   // Each Sheet row here is already one of the 8 mảng (Design, Edit,
   // Performance, SEO, Account, E-Commerce, Planning, AI Agent) — so one row
-  // = one numbered, pinned/stacked block. See .proj-stack/.proj-block in
-  // style.css for how the "next block covers the previous one" scroll
-  // effect works (pure CSS position:sticky, no scroll listener).
+  // = one numbered card. Left column = badge + title + representative
+  // image/carousel; right column = a divider then the Đề bài/Cách làm/Kết
+  // quả brief as bullet points (see .proj-card in style.css). Same HTML
+  // order works for the mobile single-column layout — no duplicate markup.
   document.getElementById("project-stack").innerHTML = data.projects.map((p, i) => {
     const slides = p.images && p.images.length ? p.images : (p.image ? [p.image] : []);
     const captions = lang === "en" ? p.slideCaptions_en : p.slideCaptions_vi;
     // "Đề bài: ... Cách làm: ... Sản phẩm/Kết quả: ..." typed as one Sheet
-    // cell gets split into 3 short paragraphs on the (roomier, dedicated)
-    // text column — see parseBriefSections() in script.js.
+    // cell gets split into up to 3 bullet items — see parseBriefSections()
+    // in script.js.
     const brief = LANHMAR.parseBriefSections(t(p, "brief"));
-    const briefParts = [];
-    if (brief.problem) briefParts.push(`<p><strong>${esc(problemLabel)}:</strong> ${esc(brief.problem)}</p>`);
-    if (brief.approach) briefParts.push(`<p><strong>${esc(approachLabel)}:</strong> ${esc(brief.approach)}</p>`);
-    if (brief.result) briefParts.push(`<p><strong>${esc(resultLabel)}:</strong> ${esc(brief.result)}</p>`);
+    const bulletParts = [];
+    if (brief.problem) bulletParts.push(`<li><strong>${esc(problemLabel)}:</strong> ${esc(brief.problem)}</li>`);
+    if (brief.approach) bulletParts.push(`<li><strong>${esc(approachLabel)}:</strong> ${esc(brief.approach)}</li>`);
+    if (brief.result) bulletParts.push(`<li><strong>${esc(resultLabel)}:</strong> ${esc(brief.result)}</li>`);
     return `
-    <article class="proj-block">
-      <div class="proj-block__head">
-        <span class="proj-block__num">0${i+1}</span>
-        <h3 class="proj-block__title">${esc(t(p,"title"))}</h3>
-      </div>
-      <div class="proj-block__inner">
-        <div class="proj-block__media">
+    <article class="proj-card">
+      <div class="proj-card__left">
+        <div class="proj-card__head">
+          <span class="proj-card__num">0${i+1}</span>
+          <h3 class="proj-card__title">${esc(t(p,"title"))}</h3>
+        </div>
+        <div class="proj-card__media">
           ${LANHMAR.buildCarousel(slides, p.videos, t(p,"title"), captions, p.canvaUrls, {overlay:true})}
         </div>
-        <div class="proj-block__text">
-          <div class="proj-block__brief">${briefParts.join("")}</div>
-          ${p.canvaUrls && p.canvaUrls.length ? `<a class="btn btn--ghost carousel-plan-link" style="display:none;" target="_blank" rel="noopener">${esc(canvaLabel)}</a>` : ""}
-        </div>
+      </div>
+      <div class="proj-card__right">
+        <hr class="proj-card__divider">
+        <ul class="proj-card__bullets">${bulletParts.join("")}</ul>
+        ${p.canvaUrls && p.canvaUrls.length ? `<a class="btn btn--ghost carousel-plan-link" style="display:none;" target="_blank" rel="noopener">${esc(canvaLabel)}</a>` : ""}
       </div>
     </article>
   `;
   }).join("");
   LANHMAR.wireCarousels(document.getElementById("project-stack"));
-  LANHMAR.syncHeaderHeight();
+  LANHMAR.wireReveal(document.getElementById("project-stack"), ".proj-card");
 
   const social = [];
   if (data.profile.facebook_url) social.push(`<a href="${esc(safeUrl(data.profile.facebook_url))}" target="_blank" rel="noopener">Facebook</a>`);
