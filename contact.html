@@ -91,7 +91,7 @@ async function render() {
     ["assets/img/icon-phone.png", phoneIntl, phoneDigits ? `tel:${phoneDigits}` : null],
     ["assets/img/icon-location.png", address, null],
   ];
-  if (p.facebook_url) items.push(["assets/img/icon-facebook.png", "Facebook — DT Lan Anh", safeUrl(p.facebook_url)]);
+  if (p.facebook_url) items.push(["assets/img/icon-facebook.png", "Facebook - DT Lan Anh", safeUrl(p.facebook_url)]);
   if (p.linkedin_url) items.push(["in", "LinkedIn", safeUrl(p.linkedin_url)]);
 
   document.getElementById("contact-list").innerHTML = items.filter(([,label]) => label).map(([ico,label,href]) => `
