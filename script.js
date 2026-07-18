@@ -141,7 +141,12 @@ const LANHMAR = (() => {
   }
 
   async function fetchRows(url) {
-    const res = await fetch(url, { cache: "no-store" });
+    // priority:"low" (Chrome's Fetch Priority API; harmlessly ignored by
+    // browsers that don't support it) — these 6 cross-origin CSV requests
+    // otherwise compete for bandwidth/connections with the page's own CSS,
+    // JS and hero image on every load, even though the fallback content.json
+    // almost always wins the race in loadContent() anyway.
+    const res = await fetch(url, { cache: "no-store", priority: "low" });
     if (!res.ok) throw new Error("Fetch failed: " + url);
     const text = await res.text();
     return parseCSV(text);
@@ -653,8 +658,18 @@ const LANHMAR = (() => {
     // that bundled snapshot rather than leaving visitors looking at a blank
     // page — then upgrade to the live Sheet data in the background as soon
     // as it lands (see scheduleSheetUpgrade above).
+    // 300ms (not the original 900ms): measured against the live Sheet, the
+    // CSV fetch chain (docs.google.com -> a redirect to
+    // doc-XX-sheets.googleusercontent.com) consistently takes well over a
+    // second end-to-end, so the Sheet essentially never wins this race
+    // either way — the only effect of a longer timeout was ~600ms of dead
+    // time on every single page load before the (already-ready) bundled
+    // snapshot got to paint. Shortening it doesn't change when the
+    // Sheet-driven background upgrade lands (that's tracked from when the
+    // fetch started, not from this timeout), it just gets the first paint
+    // on screen sooner.
     const SLOW = Symbol("slow");
-    const timeout = new Promise(resolve => setTimeout(() => resolve(SLOW), 900));
+    const timeout = new Promise(resolve => setTimeout(() => resolve(SLOW), 300));
     let fast;
     try {
       fast = await Promise.race([getSheetData(), timeout]);
