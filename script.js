@@ -770,6 +770,43 @@ const LANHMAR = (() => {
     });
   }
 
+  // Real header height (not a guessed constant), exposed as --header-h —
+  // kept as a general utility for any page that needs to offset something
+  // exactly below the sticky header (its height isn't fixed: .nav__links
+  // wraps to an extra row on narrow widths).
+  function syncHeaderHeight() {
+    const header = document.querySelector("header.site");
+    if (!header) return;
+    document.documentElement.style.setProperty("--header-h", header.offsetHeight + "px");
+  }
+
+  // Fade/slide an element in the first time it scrolls into view (used by
+  // the project cards on projects.html). Uses IntersectionObserver rather
+  // than a scroll listener — cheaper, and naturally handles elements that
+  // are already in view on page load (no flash of invisible content).
+  // Each observed element is only ever revealed once: the observer
+  // unobserves it right after adding .is-visible, so scrolling back up
+  // never re-hides a card the visitor already saw. Safe to call again on
+  // every re-render (language toggle rebuilds this markup from scratch) —
+  // matching elements just get a fresh observer on the fresh DOM nodes.
+  function wireReveal(root, selector) {
+    const scope = root || document;
+    const els = scope.querySelectorAll(selector);
+    if (!els.length) return;
+    if (!("IntersectionObserver" in window)) {
+      els.forEach(el => el.classList.add("is-visible")); // no IO support — just show everything
+      return;
+    }
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-visible");
+        io.unobserve(entry.target);
+      });
+    }, { threshold: 0.15, rootMargin: "0px 0px -40px 0px" });
+    els.forEach(el => io.observe(el));
+  }
+
   function initChrome() {
     applyLangClass();
     document.querySelectorAll(".lang-toggle button").forEach(btn => {
@@ -780,9 +817,11 @@ const LANHMAR = (() => {
       const href = a.getAttribute("href");
       a.classList.toggle("is-active", href === path);
     });
+    syncHeaderHeight();
+    window.addEventListener("resize", syncHeaderHeight);
   }
 
-  return { getLang, setLang, onRender, loadContent, t, initChrome, buildCarousel, wireCarousels, wireAccordions, esc, safeUrl, parseBriefSections, wireBriefToggles };
+  return { getLang, setLang, onRender, loadContent, t, initChrome, buildCarousel, wireCarousels, wireAccordions, esc, safeUrl, parseBriefSections, wireBriefToggles, syncHeaderHeight, wireReveal };
 })();
 
 document.addEventListener("DOMContentLoaded", () => LANHMAR.initChrome());
