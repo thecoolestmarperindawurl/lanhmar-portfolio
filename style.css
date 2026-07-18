@@ -107,9 +107,14 @@ li{ margin-bottom:.6em; line-height:1.6; color: var(--ink-soft); }
   0%, 100% { color:#fff; text-shadow: 0 0 6px rgba(255,255,255,.45); }
   50%      { color: var(--orange-soft); text-shadow: 0 0 12px rgba(255,122,69,.85); }
 }
+/* The running marquee banner is deliberately EXCLUDED from this rule (per
+   Lan Anh's explicit choice) — it's the site's signature "LANHMAR" brand
+   strip and should always scroll, even on devices/browsers with "reduce
+   motion" turned on at the OS level (this is why it looked frozen on some
+   desktops but animated fine on phones: prefers-reduced-motion was true on
+   the desktop, false on the phone). Other, more intense effects (badge
+   pulse, banner image animation) still respect the accessibility setting. */
 @media (prefers-reduced-motion: reduce){
-  .marquee__track{ animation: none; }
-  .marquee__track span.accent{ animation: none; }
   .hero__badge{ animation: none; }
   .banner-strip img{ animation: none; }
 }
