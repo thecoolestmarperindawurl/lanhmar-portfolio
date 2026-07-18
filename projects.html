@@ -53,11 +53,7 @@
   </div>
 </section>
 
-<section class="torn-section">
-  <div class="wrap">
-    <div class="grid grid--3" id="project-grid"></div>
-  </div>
-</section>
+<section class="proj-stack" id="project-stack"></section>
 
 <footer class="site">
   <div class="wrap">
@@ -78,42 +74,46 @@ async function render() {
   const esc = LANHMAR.esc, safeUrl = LANHMAR.safeUrl;
 
   const canvaLabel = lang === "en" ? "View full plan (Canva)" : "Xem toàn bộ plan (Canva)";
-  const moreLabel = lang === "en" ? "See more" : "Xem thêm";
-  const lessLabel = lang === "en" ? "Show less" : "Thu gọn";
   const problemLabel = lang === "en" ? "Brief" : "Đề bài";
   const approachLabel = lang === "en" ? "Approach" : "Cách làm";
   const resultLabel = lang === "en" ? "Result" : "Kết quả";
 
-  document.getElementById("project-grid").innerHTML = data.projects.map((p, i) => {
+  // Each Sheet row here is already one of the 8 mảng (Design, Edit,
+  // Performance, SEO, Account, E-Commerce, Planning, AI Agent) — so one row
+  // = one numbered, pinned/stacked block. See .proj-stack/.proj-block in
+  // style.css for how the "next block covers the previous one" scroll
+  // effect works (pure CSS position:sticky, no scroll listener).
+  document.getElementById("project-stack").innerHTML = data.projects.map((p, i) => {
     const slides = p.images && p.images.length ? p.images : (p.image ? [p.image] : []);
     const captions = lang === "en" ? p.slideCaptions_en : p.slideCaptions_vi;
     // "Đề bài: ... Cách làm: ... Sản phẩm/Kết quả: ..." typed as one Sheet
-    // cell gets split so Đề bài+Cách làm sit above the carousel (clamped,
-    // with a "Xem thêm" toggle if long) and Kết quả sits below it, on its
-    // own line — see parseBriefSections() in script.js.
+    // cell gets split into 3 short paragraphs on the (roomier, dedicated)
+    // text column — see parseBriefSections() in script.js.
     const brief = LANHMAR.parseBriefSections(t(p, "brief"));
-    const briefLines = [];
-    if (brief.problem) briefLines.push(`<strong>${esc(problemLabel)}:</strong> ${esc(brief.problem)}`);
-    if (brief.approach) briefLines.push(`<strong>${esc(approachLabel)}:</strong> ${esc(brief.approach)}`);
-    const briefTopHTML = briefLines.join("<br><br>");
+    const briefParts = [];
+    if (brief.problem) briefParts.push(`<p><strong>${esc(problemLabel)}:</strong> ${esc(brief.problem)}</p>`);
+    if (brief.approach) briefParts.push(`<p><strong>${esc(approachLabel)}:</strong> ${esc(brief.approach)}</p>`);
+    if (brief.result) briefParts.push(`<p><strong>${esc(resultLabel)}:</strong> ${esc(brief.result)}</p>`);
     return `
-    <div class="folder-card">
-      <div class="folder-card__tab"><span class="num">0${i+1}</span> ${esc(t(p,"title"))}</div>
-      ${briefTopHTML ? `
-      <div class="folder-card__brief" data-brief>
-        <p class="folder-card__brief-text">${briefTopHTML}</p>
-        <button type="button" class="folder-card__brief-toggle" data-more-label="${esc(moreLabel)}" data-less-label="${esc(lessLabel)}">${esc(moreLabel)}</button>
-      </div>` : ""}
-      ${LANHMAR.buildCarousel(slides, p.videos, t(p,"title"), captions, p.canvaUrls, {overlay:true})}
-      <div class="folder-card__body">
-        ${p.canvaUrls && p.canvaUrls.length ? `<a class="btn btn--ghost carousel-plan-link" style="display:none;" target="_blank" rel="noopener">${esc(canvaLabel)}</a>` : ""}
-        ${brief.result ? `<p class="folder-card__result"><strong>${esc(resultLabel)}:</strong> ${esc(brief.result)}</p>` : ""}
+    <article class="proj-block">
+      <div class="proj-block__head">
+        <span class="proj-block__num">0${i+1}</span>
+        <h3 class="proj-block__title">${esc(t(p,"title"))}</h3>
       </div>
-    </div>
+      <div class="proj-block__inner">
+        <div class="proj-block__media">
+          ${LANHMAR.buildCarousel(slides, p.videos, t(p,"title"), captions, p.canvaUrls, {overlay:true})}
+        </div>
+        <div class="proj-block__text">
+          <div class="proj-block__brief">${briefParts.join("")}</div>
+          ${p.canvaUrls && p.canvaUrls.length ? `<a class="btn btn--ghost carousel-plan-link" style="display:none;" target="_blank" rel="noopener">${esc(canvaLabel)}</a>` : ""}
+        </div>
+      </div>
+    </article>
   `;
   }).join("");
-  LANHMAR.wireCarousels(document.getElementById("project-grid"));
-  LANHMAR.wireBriefToggles(document.getElementById("project-grid"));
+  LANHMAR.wireCarousels(document.getElementById("project-stack"));
+  LANHMAR.syncHeaderHeight();
 
   const social = [];
   if (data.profile.facebook_url) social.push(`<a href="${esc(safeUrl(data.profile.facebook_url))}" target="_blank" rel="noopener">Facebook</a>`);
