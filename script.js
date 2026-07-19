@@ -842,8 +842,9 @@ const LANHMAR = (() => {
   // Requires GSAP + ScrollTrigger (loaded via CDN in projects.html) —
   // no-ops if either didn't load, so the page still renders normally
   // (cards just stay plain, fully-visible sticky cards with no fade/tilt).
-  // Also no-ops under prefers-reduced-motion, for the same reason
-  // wireReveal() skips its transition above.
+  // Deliberately does NOT skip under prefers-reduced-motion (unlike
+  // wireReveal() above) — per explicit request, this effect should always
+  // play regardless of the visitor's OS/browser motion-reduction setting.
   //
   // Safe to call again on every re-render (language toggle rebuilds this
   // markup from scratch): kills every ScrollTrigger this function created
@@ -857,7 +858,6 @@ const LANHMAR = (() => {
     const cards = [...scope.querySelectorAll(selector)];
     if (!cards.length) return;
     if (!window.gsap || !window.ScrollTrigger) return; // CDN unreachable
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     gsap.registerPlugin(ScrollTrigger);
     const header = document.querySelector("header.site");
     const offset = (header ? header.offsetHeight : 64) + 16; // matches .proj-card's sticky `top` in style.css
