@@ -836,8 +836,25 @@ const LANHMAR = (() => {
   // ties the whole thing directly to scroll position (not a timer), so
   // it's exactly as reversible as the sticky pin itself — scroll up and
   // the previous card fades back in while the current one fades back out.
-  // The last card only gets the fade-IN half (nothing follows it that
-  // needs to take over its spot), matching yeah1group.com's own last card.
+  //
+  // The FIRST card is already what a visitor lands on — nothing above it
+  // triggers a reveal — so it starts fully shown (no hidden pose) and only
+  // gets the fade-OUT half as the second card takes over. Symmetrically,
+  // the LAST card only gets the fade-IN half, since nothing follows it.
+  //
+  // The last card also gets its scroll window clamped to the page's real
+  // scroll ceiling (documentHeight - viewportHeight). Reason: its "end"
+  // would normally be its own natural bottom edge, same as every other
+  // card — but with no card after it, there's nothing forcing enough
+  // trailing space to exist below it, so on taller viewports that natural
+  // end point can fall past what the page can actually scroll to, leaving
+  // the card stuck mid-fade forever. Clamping guarantees its reveal always
+  // finishes by the time a visitor hits true max scroll, on any screen.
+  //
+  // Trigger positions are measured from each card's natural (untransformed)
+  // bounding box, captured in one pass BEFORE any gsap.set() below touches
+  // opacity/rotateX/scale — reading getBoundingClientRect after that set()
+  // would return the already-shrunk/rotated box and throw the math off.
   //
   // Requires GSAP + ScrollTrigger (loaded via CDN in projects.html) —
   // no-ops if either didn't load, so the page still renders normally
@@ -861,16 +878,36 @@ const LANHMAR = (() => {
     gsap.registerPlugin(ScrollTrigger);
     const header = document.querySelector("header.site");
     const offset = (header ? header.offsetHeight : 64) + 16; // matches .proj-card's sticky `top` in style.css
+
+    const scrollYAtMeasure = window.scrollY;
+    const naturalRects = cards.map(card => {
+      const r = card.getBoundingClientRect();
+      return { top: r.top + scrollYAtMeasure, bottom: r.bottom + scrollYAtMeasure };
+    });
+    const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+
     cards.forEach((card, i) => {
+      const isFirst = i === 0;
       const isLast = i === cards.length - 1;
-      gsap.set(card, { transformPerspective: 900, transformOrigin: "top center", opacity: 0, rotateX: -10, scale: 0.8 });
-      const tl = gsap.timeline()
-        .to(card, { opacity: 1, rotateX: 0, scale: 1, duration: 1, ease: "power1.out" });
+      gsap.set(card, {
+        transformPerspective: 900, transformOrigin: "top center",
+        opacity: isFirst ? 1 : 0, rotateX: isFirst ? 0 : -10, scale: isFirst ? 1 : 0.8,
+      });
+      const tl = gsap.timeline();
+      if (!isFirst) tl.to(card, { opacity: 1, rotateX: 0, scale: 1, duration: 1, ease: "power1.out" });
       if (!isLast) tl.to(card, { opacity: 0, rotateX: -10, scale: 0.8, duration: 1, ease: "power1.in" });
+
+      let start = naturalRects[i].top - offset;
+      let end = naturalRects[i].bottom - offset;
+      if (isLast) {
+        end = Math.min(end, maxScroll);
+        start = Math.min(start, end - 260);
+      }
+
       cardStackTriggers.push(ScrollTrigger.create({
         trigger: card,
-        start: `top ${offset}px`,
-        end: `bottom ${offset}px`,
+        start,
+        end,
         scrub: true,
         animation: tl,
       }));
