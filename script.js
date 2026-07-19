@@ -789,6 +789,20 @@ const LANHMAR = (() => {
   // never re-hides a card the visitor already saw. Safe to call again on
   // every re-render (language toggle rebuilds this markup from scratch) —
   // matching elements just get a fresh observer on the fresh DOM nodes.
+  //
+  // rootMargin: "0px 0px -20% 0px" shrinks the viewport's bottom edge
+  // upward by 20% before intersection is computed, so a card only counts
+  // as "intersecting" once it has crossed roughly 80% down the screen —
+  // matching the requested trigger point without needing a scroll listener
+  // to measure position by hand.
+  //
+  // Staggered reveal: entries arrive in one batch whenever several cards
+  // cross the trigger at once (most commonly several already sit above the
+  // 80% line on first paint). Each entry in that same batch gets a small
+  // extra transition-delay (STAGGER_STEP per index) set as inline style
+  // right before .is-visible is added, so they animate in as a short
+  // ripple instead of all at once. Cards revealed individually while
+  // scrolling just get index 0 (no perceptible delay).
   function wireReveal(root, selector) {
     const scope = root || document;
     const els = scope.querySelectorAll(selector);
@@ -797,13 +811,14 @@ const LANHMAR = (() => {
       els.forEach(el => el.classList.add("is-visible")); // no IO support — just show everything
       return;
     }
+    const STAGGER_STEP = 0.12; // seconds between cards revealed in the same batch
     const io = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
+      entries.filter(entry => entry.isIntersecting).forEach((entry, i) => {
+        entry.target.style.transitionDelay = (i * STAGGER_STEP) + "s";
         entry.target.classList.add("is-visible");
         io.unobserve(entry.target);
       });
-    }, { threshold: 0.15, rootMargin: "0px 0px -40px 0px" });
+    }, { threshold: 0, rootMargin: "0px 0px -20% 0px" });
     els.forEach(el => io.observe(el));
   }
 
