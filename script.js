@@ -822,6 +822,61 @@ const LANHMAR = (() => {
     els.forEach(el => io.observe(el));
   }
 
+  // Pinned card-stack scroll effect (projects.html), modeled on the
+  // "Hoạt động kinh doanh" section on yeah1group.com's homepage. Each card
+  // is already `position: sticky` at the same `top` (see .proj-card in
+  // style.css), which is what makes a card pin in place while the next
+  // one scrolls up over it. This function layers a GSAP ScrollTrigger on
+  // top of that: as a card's own (unpinned, in-flow) top edge reaches the
+  // sticky line, it scrubs from a hidden pose (opacity 0, tilted back
+  // via rotateX, scaled down) to fully shown (opacity 1, flat, full
+  // scale) — then, as that same card's own bottom edge reaches the sticky
+  // line (the point where it would naturally unstick and hand off to the
+  // next card), it scrubs back to the hidden pose again. `scrub: true`
+  // ties the whole thing directly to scroll position (not a timer), so
+  // it's exactly as reversible as the sticky pin itself — scroll up and
+  // the previous card fades back in while the current one fades back out.
+  // The last card only gets the fade-IN half (nothing follows it that
+  // needs to take over its spot), matching yeah1group.com's own last card.
+  //
+  // Requires GSAP + ScrollTrigger (loaded via CDN in projects.html) —
+  // no-ops if either didn't load, so the page still renders normally
+  // (cards just stay plain, fully-visible sticky cards with no fade/tilt).
+  // Also no-ops under prefers-reduced-motion, for the same reason
+  // wireReveal() skips its transition above.
+  //
+  // Safe to call again on every re-render (language toggle rebuilds this
+  // markup from scratch): kills every ScrollTrigger this function created
+  // last time first, since those would otherwise keep pointing at DOM
+  // nodes the re-render just threw away.
+  let cardStackTriggers = [];
+  function wireCardStack(root, selector) {
+    cardStackTriggers.forEach(st => st.kill());
+    cardStackTriggers = [];
+    const scope = root || document;
+    const cards = [...scope.querySelectorAll(selector)];
+    if (!cards.length) return;
+    if (!window.gsap || !window.ScrollTrigger) return; // CDN unreachable
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    gsap.registerPlugin(ScrollTrigger);
+    const header = document.querySelector("header.site");
+    const offset = (header ? header.offsetHeight : 64) + 16; // matches .proj-card's sticky `top` in style.css
+    cards.forEach((card, i) => {
+      const isLast = i === cards.length - 1;
+      gsap.set(card, { transformPerspective: 900, transformOrigin: "top center", opacity: 0, rotateX: -10, scale: 0.8 });
+      const tl = gsap.timeline()
+        .to(card, { opacity: 1, rotateX: 0, scale: 1, duration: 1, ease: "power1.out" });
+      if (!isLast) tl.to(card, { opacity: 0, rotateX: -10, scale: 0.8, duration: 1, ease: "power1.in" });
+      cardStackTriggers.push(ScrollTrigger.create({
+        trigger: card,
+        start: `top ${offset}px`,
+        end: `bottom ${offset}px`,
+        scrub: true,
+        animation: tl,
+      }));
+    });
+  }
+
   function initChrome() {
     applyLangClass();
     document.querySelectorAll(".lang-toggle button").forEach(btn => {
@@ -836,7 +891,7 @@ const LANHMAR = (() => {
     window.addEventListener("resize", syncHeaderHeight);
   }
 
-  return { getLang, setLang, onRender, loadContent, t, initChrome, buildCarousel, wireCarousels, wireAccordions, esc, safeUrl, parseBriefSections, wireBriefToggles, syncHeaderHeight, wireReveal };
+  return { getLang, setLang, onRender, loadContent, t, initChrome, buildCarousel, wireCarousels, wireAccordions, esc, safeUrl, parseBriefSections, wireBriefToggles, syncHeaderHeight, wireReveal, wireCardStack };
 })();
 
 document.addEventListener("DOMContentLoaded", () => LANHMAR.initChrome());
