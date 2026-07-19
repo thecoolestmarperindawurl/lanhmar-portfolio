@@ -572,30 +572,30 @@ header.site{
    grid collapses to one column — left content first (number/title/image),
    then the divider + bullets — which is exactly the HTML source order, so
    no markup duplication is needed for the mobile stacked layout.
-   Cards fade/slide in the first time they scroll into view — see
-   LANHMAR.wireReveal() in script.js (IntersectionObserver, class
-   .is-visible added once and never removed, so scrolling back up doesn't
-   re-hide a card the visitor already saw). Trigger point is ~80% down the
-   viewport (rootMargin in wireReveal), duration is .7s with an ease-out
-   cubic-bezier for a premium, non-jarring feel, and cards revealed in the
-   same batch (e.g. several already in view on first paint) stagger in via
-   a small per-card transition-delay set in JS.
-   Stacking scroll effect: each card is `position: sticky` at the same
-   `top` (just below the sticky header), so as the visitor scrolls down a
-   later card slides up and pins itself over whatever remains of the
-   previous one — and scrolling back up naturally un-covers it again, since
-   sticky is driven directly by scroll position rather than a one-shot JS
-   animation. No z-index juggling needed for the cover order: `transform`
-   is already set on every `.proj-card` (for the fade/slide-in above), and
-   a used transform value other than `none` establishes a stacking context,
-   so later cards in the DOM simply paint over earlier ones — matches the
-   left-to-right/first-to-last order the cards already render in. Each card
-   also gets an explicit `z-index` (set inline per card in projects.html)
-   as a defensive backstop in case that fade-in transform is ever removed
-   later, so the cover order won't silently depend on the animation. */
+   Pinned card-stack scroll effect, modeled on yeah1group.com's "Hoạt động
+   kinh doanh" homepage section: each card is `position: sticky` at the
+   same `top` (just below the sticky header), so as the visitor scrolls
+   down a later card pins itself in the same on-screen spot the previous
+   one occupied. LANHMAR.wireCardStack() in script.js (GSAP + ScrollTrigger)
+   layers a scrubbed fade/3D-tilt/scale on top: a card dissolves in from
+   opacity 0 + tilted-back-and-shrunk (rotateX/scale) to fully shown as it
+   reaches the sticky line, then dissolves back out the same way as the
+   next card takes over — instead of one card hard-covering the other.
+   `perspective` below on .proj-list is what makes that rotateX read as a
+   3D tilt rather than a flat squash. Because it's `scrub: true`, the whole
+   thing is driven directly by scroll position (like the sticky pin
+   itself), so scrolling back up smoothly reverses it. No opacity/transform
+   is set in CSS here — GSAP sets both via inline style at runtime (and
+   skips doing so under prefers-reduced-motion or if the CDN didn't load),
+   so the CSS default is simply "fully visible, no animation," which is
+   also the safe fallback if JS never runs. Each card still gets an
+   explicit `z-index` (set inline per card in projects.html) as a
+   defensive backstop for the cover order, independent of whatever
+   transform GSAP happens to be applying at a given scroll position. */
 .proj-list{
   max-width: 1080px; margin:0 auto; padding: 40px 24px 80px;
   display:flex; flex-direction:column; gap:28px;
+  perspective: 900px;
 }
 .proj-card{
   position: sticky;
@@ -605,12 +605,6 @@ header.site{
   padding: 36px;
   display:grid; grid-template-columns: 34% 1fr; gap:36px; align-items:start;
   box-shadow: var(--shadow-soft);
-  opacity:0; transform: translateY(30px);
-  transition: opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1);
-}
-.proj-card.is-visible{ opacity:1; transform:translateY(0); }
-@media (prefers-reduced-motion: reduce){
-  .proj-card{ transition:none; opacity:1; transform:none; }
 }
 .proj-card__left{ display:flex; flex-direction:column; gap:16px; }
 .proj-card__head{ display:flex; align-items:center; gap:14px; }
