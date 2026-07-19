@@ -84,6 +84,13 @@ async function render() {
   // image/carousel; right column = a divider then the Đề bài/Cách làm/Kết
   // quả brief as bullet points (see .proj-card in style.css). Same HTML
   // order works for the mobile single-column layout — no duplicate markup.
+  // Cards are `position: sticky` (see .proj-card in style.css) so later
+  // ones slide up and cover earlier ones while scrolling. The inline
+  // z-index here (1, 2, 3…, matching render order) is a defensive backstop
+  // for that cover order — style.css's stacking-context trick (built on
+  // the fade-in transform) already produces the same order on its own,
+  // but an explicit z-index keeps it correct even if that transform is
+  // ever removed later.
   document.getElementById("project-stack").innerHTML = data.projects.map((p, i) => {
     const slides = p.images && p.images.length ? p.images : (p.image ? [p.image] : []);
     const captions = lang === "en" ? p.slideCaptions_en : p.slideCaptions_vi;
@@ -96,7 +103,7 @@ async function render() {
     if (brief.approach) bulletParts.push(`<li><strong>${esc(approachLabel)}:</strong> ${esc(brief.approach)}</li>`);
     if (brief.result) bulletParts.push(`<li><strong>${esc(resultLabel)}:</strong> ${esc(brief.result)}</li>`);
     return `
-    <article class="proj-card">
+    <article class="proj-card" style="z-index:${i+1}">
       <div class="proj-card__left">
         <div class="proj-card__head">
           <span class="proj-card__num">0${i+1}</span>
