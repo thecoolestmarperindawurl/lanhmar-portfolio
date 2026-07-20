@@ -835,31 +835,40 @@ const LANHMAR = (() => {
   // reversible as the sticky pin itself — scroll up and the previous card
   // fades back in while the current one fades back out.
   //
-  // Every hand-off shares the same crossfade window (see CROSSFADE_WINDOW
-  // below): a card's fade-IN is centered on its OWN pin point (the scroll
-  // position where its top reaches the sticky line); its fade-OUT is
-  // centered on the NEXT card's pin point. That means at the exact scroll
-  // position where card N+1 arrives, card N is exactly half faded out and
-  // card N+1 is exactly half faded in — both animating across the same
-  // shared CROSSFADE_WINDOW*2 px stretch, so every pair of adjacent cards
-  // visibly cross-dissolves into each other with no dead gap in between.
-  // Between its own fade-in finishing and the next card's fade-out
-  // starting, a card just holds fully visible (a no-op tween, so scrub
-  // timing still matches real scroll pixels 1:1 — see holdDuration below).
+  // Every hand-off shares one crossfade window centered on the incoming
+  // card's own pin point (the scroll position where its top reaches the
+  // sticky line): the outgoing card's fade-OUT and the incoming card's
+  // fade-IN both animate across that exact same stretch, so at the
+  // midpoint both cards sit at ~50% opacity, cross-dissolving into each
+  // other with no dead gap. Each transition's half-width defaults to
+  // CROSSFADE_WINDOW but is capped per-pair at half the natural gap
+  // between the two cards' pin points (see `halfW` below) — this keeps a
+  // card's hold-at-full-opacity phase (the calm beat between finishing its
+  // own fade-in and starting its fade-out into the next card) from ever
+  // going negative, which is what used to let a card start fading out
+  // before it had even finished fading in (a card would flash away before
+  // being fully seen). `holdDuration` is only added as a real tween when
+  // positive, so scrub timing still matches real scroll pixels 1:1.
   //
   // The FIRST card is already what a visitor lands on — nothing above it
   // triggers a reveal — so it starts fully shown (no hidden pose) and only
-  // gets the fade-OUT half, centered on the second card's pin point.
-  // Symmetrically, the LAST card only gets the fade-IN half, centered on
-  // its own pin point, since nothing follows it to fade out into.
+  // gets the fade-OUT half. Symmetrically, the LAST card only gets the
+  // fade-IN half, since nothing follows it to fade out into.
   //
-  // The last card's window also gets clamped to the page's real scroll
-  // ceiling (documentHeight - viewportHeight). Reason: with no card after
-  // it, nothing forces enough trailing space to exist below it, so on
-  // taller viewports its natural fade-in window can land past what the
-  // page can actually scroll to, leaving it stuck mid-fade forever.
-  // Clamping guarantees its reveal always finishes by the time a visitor
-  // hits true max scroll, on any screen.
+  // The last card has no trailing card after it to force scroll room to
+  // exist below it, so its natural pin point (and the transition into it)
+  // can land past — or too close to — the page's real scroll ceiling
+  // (documentHeight - viewportHeight), especially on taller viewports.
+  // Rather than just clamping that transition's end and independently
+  // clamping its start (which used to shift the window without moving the
+  // second-to-last card's matching fade-out window by the same amount —
+  // the two would fall out of sync, so the second-to-last card could still
+  // be mid fade-in, or already past holding, when the last card started
+  // fading in), the final transition's center AND half-width are both
+  // recomputed together from the actual room left after the second-to-last
+  // card's own fade-in ends, then applied identically to both cards. That
+  // guarantees they stay in lockstep, the hold in between never goes
+  // negative, and the reveal always finishes by true max scroll.
   //
   // Pin points are measured from each card's natural (untransformed) top
   // edge, captured in one pass BEFORE any gsap.set() below touches
@@ -892,38 +901,57 @@ const LANHMAR = (() => {
 
     const scrollYAtMeasure = window.scrollY;
     const naturalTops = cards.map(card => card.getBoundingClientRect().top + scrollYAtMeasure);
+    const pinPoints = naturalTops.map(t => t - offset);
+    const n = cards.length;
+    if (n === 1) {
+      gsap.set(cards[0], { opacity: 1, rotateX: 0, scale: 1 });
+      return; // nothing to crossfade against
+    }
+
+    // centers[i] / halfW[i] describe the transition FROM card i TO card
+    // i+1 — shared, as-is, between card i's fade-out and card i+1's fade-in.
+    const centers = pinPoints.slice(1);
+    const halfW = new Array(n - 1).fill(CROSSFADE_WINDOW);
+    for (let i = 0; i < n - 1; i++) {
+      const gap = centers[i] - (i === 0 ? pinPoints[0] : centers[i - 1]);
+      halfW[i] = Math.max(20, Math.min(halfW[i], gap / 2));
+    }
+
+    // Re-fit the final transition against the real scroll ceiling, using
+    // the second-to-last card's own (already-clamped) fade-in half-width
+    // to know exactly where its fade-in finishes.
     const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+    const li = n - 2; // index into centers/halfW for the final transition
+    const priorHalfW = li > 0 ? halfW[li - 1] : CROSSFADE_WINDOW;
+    const priorFadeInEnd = pinPoints[n - 2] + priorHalfW;
+    const available = maxScroll - priorFadeInEnd;
+    halfW[li] = Math.max(10, Math.min(halfW[li], available / 2));
+    centers[li] = Math.min(centers[li], maxScroll - halfW[li]);
+    centers[li] = Math.max(centers[li], priorFadeInEnd + halfW[li]); // never start before the fade-in ends
 
     cards.forEach((card, i) => {
       const isFirst = i === 0;
-      const isLast = i === cards.length - 1;
+      const isLast = i === n - 1;
       gsap.set(card, {
         transformPerspective: 900, transformOrigin: "top center",
         opacity: isFirst ? 1 : 0, rotateX: isFirst ? 0 : -10, scale: isFirst ? 1 : 0.8,
       });
 
-      const pinPoint = naturalTops[i] - offset;
-      const nextPinPoint = isLast ? null : naturalTops[i + 1] - offset;
+      const inCenter = isFirst ? null : centers[i - 1];
+      const inW = isFirst ? null : halfW[i - 1];
+      const outCenter = isLast ? null : centers[i];
+      const outW = isLast ? null : halfW[i];
 
-      let start = isFirst ? nextPinPoint - CROSSFADE_WINDOW : pinPoint - CROSSFADE_WINDOW;
-      let end = isLast ? pinPoint + CROSSFADE_WINDOW : nextPinPoint + CROSSFADE_WINDOW;
-      if (isLast) {
-        // No card follows the last one, so nothing guarantees enough
-        // trailing scroll room for its fade-in window to land within the
-        // page's real scroll ceiling on tall viewports — clamp it so the
-        // reveal always finishes by the time a visitor hits true max
-        // scroll, on any screen (see prior fix note below).
-        end = Math.min(end, maxScroll);
-        start = Math.min(start, end - CROSSFADE_WINDOW * 2);
-      }
+      const start = isFirst ? outCenter - outW : inCenter - inW;
+      const end = isLast ? inCenter + inW : outCenter + outW;
 
       const tl = gsap.timeline();
-      if (!isFirst) tl.to(card, { opacity: 1, rotateX: 0, scale: 1, duration: CROSSFADE_WINDOW * 2 });
+      if (!isFirst) tl.to(card, { opacity: 1, rotateX: 0, scale: 1, duration: inW * 2 });
       if (!isFirst && !isLast) {
-        const holdDuration = (nextPinPoint - CROSSFADE_WINDOW) - (pinPoint + CROSSFADE_WINDOW);
+        const holdDuration = (outCenter - outW) - (inCenter + inW);
         if (holdDuration > 0) tl.to({}, { duration: holdDuration }); // static hold, fully visible
       }
-      if (!isLast) tl.to(card, { opacity: 0, rotateX: -10, scale: 0.8, duration: CROSSFADE_WINDOW * 2 });
+      if (!isLast) tl.to(card, { opacity: 0, rotateX: -10, scale: 0.8, duration: outW * 2 });
 
       cardStackTriggers.push(ScrollTrigger.create({
         trigger: card,
