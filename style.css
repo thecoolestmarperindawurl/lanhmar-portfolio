@@ -593,7 +593,13 @@ header.site{
    defensive backstop for the cover order, independent of whatever
    transform GSAP happens to be applying at a given scroll position. */
 .proj-list{
-  max-width: 1080px; margin:0 auto; padding: 40px 24px 80px;
+  /* Bottom padding is generous on purpose: the last card has no card
+     after it to force trailing scroll room to exist, and the pinned
+     crossfade effect (LANHMAR.wireCardStack() in script.js) needs real
+     room past the last card's natural position to play its hand-off
+     with the last card at full width/room to breathe, instead of being
+     squeezed against the page's scroll ceiling. */
+  max-width: 1080px; margin:0 auto; padding: 40px 24px 340px;
   display:flex; flex-direction:column; gap:28px;
   perspective: 900px;
 }
