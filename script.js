@@ -102,6 +102,14 @@ const LANHMAR = (() => {
   // newlines, and "" escaped quotes) — avoids depending on an external CDN
   // library just to read a published Google Sheet CSV.
   function parseCSV(text) {
+    // Google's CSV export commonly prepends a UTF-8 BOM (U+FEFF) to the
+    // file. Left in place, it silently glues itself onto the very first
+    // header cell (e.g. "﻿field" instead of "field"), which then never
+    // matches anything real code looks up by that header name — the whole
+    // tab quietly parses as if every row were missing its first column,
+    // and the page falls back to the bundled snapshot with zero visible
+    // warning. Strip it before parsing starts.
+    if (text.charCodeAt(0) === 0xFEFF) text = text.slice(1);
     const rows = [];
     let row = [];
     let field = "";
@@ -531,9 +539,24 @@ const LANHMAR = (() => {
       const panel = acc.querySelector(".accordion__panel");
       if (!header || !panel) return;
 
+      // A closed panel is only visually collapsed via `max-height:0;
+      // overflow:hidden` (so it can animate open) — that alone does NOT
+      // pull its contents out of the Tab order or off-screen-reader
+      // navigation. A keyboard or screen-reader visitor would land on that
+      // org's hidden carousel prev/next/dot buttons before ever reaching
+      // the next real heading. `inert` removes the whole collapsed subtree
+      // from both focus and the accessibility tree while leaving the
+      // max-height transition free to animate normally; it's restored the
+      // instant the panel opens. Initialize it to match whatever state
+      // this accordion is already in (a re-render can call wireAccordions()
+      // on markup that's about to be re-marked is-open — see the
+      // openOrgs restore in certificates.html — so this isn't always "closed").
+      panel.inert = !acc.classList.contains("is-open");
+
       const open = () => {
         acc.classList.add("is-open");
         header.setAttribute("aria-expanded", "true");
+        panel.inert = false;
         panel.style.maxHeight = panel.scrollHeight + "px";
       };
       const close = () => {
@@ -543,6 +566,7 @@ const LANHMAR = (() => {
         });
         acc.classList.remove("is-open");
         header.setAttribute("aria-expanded", "false");
+        panel.inert = true;
       };
 
       header.addEventListener("click", () => {
@@ -557,7 +581,18 @@ const LANHMAR = (() => {
   }
 
   async function loadFromSheet() {
-    const [profileRows, skillsRows, softwareRows, expRows, certRows, projRows] = await Promise.all([
+    // Promise.all would reject the WHOLE Sheet load the moment any single
+    // one of these 6 tabs has a network hiccup — throwing away the other 5
+    // tabs that fetched just fine and forcing the entire site back onto the
+    // bundled fallback for every section, not just the one that actually
+    // failed. Promise.allSettled + a per-tab [] on failure keeps every
+    // tab independent: a broken "certificates" tab, say, only leaves
+    // certRows empty, which sectionOk()/mergeWithFallback() below already
+    // know how to patch from assets/content.json for just that one
+    // section — profile/experience/projects still come from the live
+    // Sheet as normal.
+    const tabs = ["profile", "skills", "software", "experience", "certificates", "projects"];
+    const results = await Promise.allSettled([
       fetchRows(SHEET_CSV.profile),
       fetchRows(SHEET_CSV.skills),
       fetchRows(SHEET_CSV.software),
@@ -565,6 +600,13 @@ const LANHMAR = (() => {
       fetchRows(SHEET_CSV.certificates),
       fetchRows(SHEET_CSV.projects),
     ]);
+    const [profileRows, skillsRows, softwareRows, expRows, certRows, projRows] = results.map((r, i) => {
+      if (r.status === "rejected") {
+        console.warn(`[LANHMAR] Không tải được tab "${tabs[i]}" từ Google Sheet — tạm dùng bản dự phòng cho riêng mục này.`, r.reason);
+        return [];
+      }
+      return r.value;
+    });
     return {
       profile: buildProfile(profileRows, skillsRows, softwareRows),
       experience: buildExperience(expRows),
@@ -906,8 +948,29 @@ const LANHMAR = (() => {
     const header = document.querySelector("header.site");
     const offset = (header ? header.offsetHeight : 64) + 16; // matches .proj-card's sticky `top` in style.css
 
+    // This function re-runs on every re-render (language toggle, and the
+    // background Sheet-data upgrade once it lands — see scheduleSheetUpgrade
+    // in loadContent()), which can happen while the visitor has already
+    // scrolled partway down the stack and one or more cards are actively
+    // `position: sticky`-pinned. getBoundingClientRect() on a currently-
+    // pinned card returns its PAINTED position (the sticky offset), not the
+    // natural document-flow position this measurement actually needs — using
+    // that stuck position as "ground truth" shifts every transition's
+    // start/end by however far the visitor had scrolled, breaking the
+    // crossfade timing exactly like the original Project-7/8 bug. Sticky
+    // elements still reserve their normal-flow box regardless of their
+    // current stuck offset, so momentarily forcing `position: static` on
+    // just the card being measured (one at a time, restored immediately
+    // after) reads its true natural position without disturbing any other
+    // card's layout.
     const scrollYAtMeasure = window.scrollY;
-    const naturalTops = cards.map(card => card.getBoundingClientRect().top + scrollYAtMeasure);
+    const naturalTops = cards.map(card => {
+      const prevPosition = card.style.position;
+      card.style.position = "static";
+      const top = card.getBoundingClientRect().top + scrollYAtMeasure;
+      card.style.position = prevPosition;
+      return top;
+    });
     const pinPoints = naturalTops.map(t => t - offset);
     const n = cards.length;
     if (n === 1) {
@@ -984,7 +1047,26 @@ const LANHMAR = (() => {
     window.addEventListener("resize", syncHeaderHeight);
   }
 
-  return { getLang, setLang, onRender, loadContent, t, initChrome, buildCarousel, wireCarousels, wireAccordions, esc, safeUrl, parseBriefSections, wireBriefToggles, syncHeaderHeight, wireReveal, wireCardStack };
+  // Last-resort UI for when loadContent() rejects — i.e. BOTH the live
+  // Google Sheet and the bundled assets/content.json fallback failed (the
+  // Sheet unreachable/unpublished AND, separately, the static file 404ing
+  // or failing to parse — rare, but not impossible, e.g. a broken deploy).
+  // Every page's `render()` call is wrapped to catch that rejection and
+  // call this instead of just leaving the visitor on a blank page with
+  // nothing but a console error only a developer would ever see.
+  function showLoadError() {
+    if (document.getElementById("lanhmar-load-error")) return; // don't stack duplicates on retry
+    const bar = document.createElement("div");
+    bar.id = "lanhmar-load-error";
+    bar.setAttribute("role", "alert");
+    bar.style.cssText = "position:sticky; top:0; z-index:9999; background:#b3261e; color:#fff; text-align:center; padding:10px 16px; font:600 14px/1.4 'Montserrat',system-ui,sans-serif;";
+    bar.textContent = currentLang === "en"
+      ? "Couldn't load this page's content right now. Please reload the page, or check back in a few minutes."
+      : "Không tải được nội dung trang này. Vui lòng tải lại trang, hoặc quay lại sau vài phút.";
+    document.body.prepend(bar);
+  }
+
+  return { getLang, setLang, onRender, loadContent, t, initChrome, buildCarousel, wireCarousels, wireAccordions, esc, safeUrl, parseBriefSections, wireBriefToggles, syncHeaderHeight, wireReveal, wireCardStack, showLoadError };
 })();
 
 document.addEventListener("DOMContentLoaded", () => LANHMAR.initChrome());
