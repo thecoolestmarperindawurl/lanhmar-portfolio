@@ -450,9 +450,16 @@ const LANHMAR = (() => {
       // mode — buildCarousel's opts.overlay put it there) or as a sibling
       // element below the carousel, provided by the page template
       // (certificates.html's older pattern) — check both. The plan-link
-      // button is always a sibling (it's a real clickable CTA, not a
-      // passive caption, so it stays outside the carousel in both modes).
-      const wrap = car.parentElement;
+      // button is always a sibling, but not necessarily an IMMEDIATE one:
+      // in projects.html the carousel sits in `.proj-card__left` while the
+      // plan-link button lives in the neighboring `.proj-card__right`
+      // column, so `car.parentElement` alone misses it. Walk up to the
+      // nearest `<article>` card wrapper first (that's projects.html's
+      // `.proj-card`, the only place on the site that uses `<article>`) and
+      // only fall back to the immediate parent for templates that don't use
+      // one (certificates.html's `.cert-card`, where the carousel and its
+      // caption box share that same immediate parent already).
+      const wrap = car.closest("article") || car.parentElement;
       const captionEl = car.querySelector(".carousel-caption") || (wrap ? wrap.querySelector(".carousel-caption") : null);
       const planLink = wrap ? wrap.querySelector(".carousel-plan-link") : null;
 
