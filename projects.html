@@ -131,7 +131,13 @@ async function render() {
       </div>
     </article>
   `;
-  }).join("");
+  // A trailing spacer (see .proj-list__spacer in style.css) — the last
+  // card's `position: sticky` only holds it in place while there's a
+  // following sibling box for the browser to constrain against; trailing
+  // padding on .proj-list alone doesn't do it. Without this the last
+  // card's pin never actually engages and LANHMAR.wireCardStack()'s
+  // crossfade finishes fading it in after it has already scrolled away.
+  }).join("") + `<div class="proj-list__spacer" aria-hidden="true"></div>`;
   LANHMAR.wireCarousels(document.getElementById("project-stack"));
   LANHMAR.wireCardStack(document.getElementById("project-stack"), ".proj-card");
 
