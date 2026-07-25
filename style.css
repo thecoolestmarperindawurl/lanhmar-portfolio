@@ -593,16 +593,27 @@ header.site{
    defensive backstop for the cover order, independent of whatever
    transform GSAP happens to be applying at a given scroll position. */
 .proj-list{
-  /* Bottom padding is generous on purpose: the last card has no card
-     after it to force trailing scroll room to exist, and the pinned
-     crossfade effect (LANHMAR.wireCardStack() in script.js) needs real
-     room past the last card's natural position to play its hand-off
-     with the last card at full width/room to breathe, instead of being
-     squeezed against the page's scroll ceiling. */
-  max-width: 1080px; margin:0 auto; padding: 40px 24px 340px;
+  max-width: 1080px; margin:0 auto; padding: 40px 24px 80px;
   display:flex; flex-direction:column; gap:28px;
   perspective: 900px;
 }
+/* `position: sticky` on the LAST .proj-card only holds it in place while
+   there's a following box in normal flow for the browser to constrain
+   against — trailing padding on .proj-list does NOT count (tested: even
+   2000px of padding-bottom on .proj-list has zero effect on how long the
+   last card stays stuck; a real sibling element does). Without this
+   spacer the last card never actually sticks: it just slides through its
+   target position in an instant, and LANHMAR.wireCardStack()'s crossfade
+   (which assumes the card holds still while it fades in) then finishes
+   fading it in *after* it has already scrolled off-screen, leaving a
+   large blank gap before the footer. This spacer — appended as a plain
+   sibling after the last card in projects.html's render() — gives the
+   sticky mechanism the "room after" it needs, so the last card actually
+   pins in place like every other card while it fades in. Height matches
+   the ~380px natural gap between other cards (CROSSFADE_WINDOW*2 + the
+   same ~80px hold they get) so the last hand-off feels identical to
+   every other one instead of being cramped. */
+.proj-list__spacer{ height: 380px; }
 .proj-card{
   position: sticky;
   top: calc(var(--header-h, 64px) + 16px);
