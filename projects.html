@@ -147,8 +147,18 @@ async function render() {
   social.push(`<a href="mailto:${esc(data.profile.email)}">Email</a>`);
   document.getElementById("footer-social").innerHTML = social.join("");
 }
-render();
-LANHMAR.onRender(render);
+// If loadContent() ever rejects (both the live Sheet AND the bundled
+// assets/content.json fallback failed), render() throws before it can
+// populate anything — left unguarded, that's just a silent console error
+// and a permanently blank page. Show a minimal, visible message instead.
+function safeRender() {
+  render().catch(err => {
+    console.error("[LANHMAR] render() thất bại:", err);
+    LANHMAR.showLoadError();
+  });
+}
+safeRender();
+LANHMAR.onRender(safeRender);
 </script>
 </body>
 </html>
