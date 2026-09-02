@@ -1,32 +1,64 @@
 {
   "profile": {
     "name": "Dương Thị Lan Anh",
+    "name_vi": "Dương Thị Lan Anh",
+    "name_en": "Anh Duong Thi Lan",
     "brand": "LANHMAR",
+    "brand_vi": "LANHMAR",
+    "brand_en": "LANHMAR",
+    "brandTagline": "Digital Marketer",
     "brandTagline_vi": "Digital Marketer",
     "brandTagline_en": "Digital Marketer",
+    "heroLine": "Tân cử nhân Marketing, đang xây từng bước sự nghiệp Digital Marketing.",
     "heroLine_vi": "Tân cử nhân Marketing, đang xây từng bước sự nghiệp Digital Marketing.",
     "heroLine_en": "Fresh Marketing graduate, building a Digital Marketing career one step at a time.",
+    "bio": "Tôi là Tân Cử nhân ngành Marketing của Trường Đại học Tài chính - Marketing (UFM). Sở hữu nền tảng vững chắc về nghiên cứu thị trường, lập kế hoạch chiến lược và khả năng đo lường hiệu suất. Đã chứng minh năng lực thực chiến qua khóa luận tốt nghiệp đạt điểm xuất sắc 9.0/10 và kinh nghiệm trực tiếp tối ưu hóa các chiến dịch giúp tăng 20% lưu lượng truy cập. Nổi bật với kỹ năng quản lý dự án (từ khâu lên Proposal, Pitching đến Nghiệm thu), tư duy phân tích số liệu nhạy bén và tinh thần linh hoạt.",
     "bio_vi": "Tôi là Tân Cử nhân ngành Marketing của Trường Đại học Tài chính - Marketing (UFM). Sở hữu nền tảng vững chắc về nghiên cứu thị trường, lập kế hoạch chiến lược và khả năng đo lường hiệu suất. Đã chứng minh năng lực thực chiến qua khóa luận tốt nghiệp đạt điểm xuất sắc 9.0/10 và kinh nghiệm trực tiếp tối ưu hóa các chiến dịch giúp tăng 20% lưu lượng truy cập. Nổi bật với kỹ năng quản lý dự án (từ khâu lên Proposal, Pitching đến Nghiệm thu), tư duy phân tích số liệu nhạy bén và tinh thần linh hoạt.",
-    "bio_en": "I'm a fresh Marketing graduate from the University of Finance – Marketing (UFM), with a solid foundation in market research, strategic planning, and performance measurement. My thesis scored an excellent 9.0/10, and I've directly optimized campaigns that grew organic traffic by 20%. I bring hands-on project management skills (from proposal and pitching through final acceptance), a sharp eye for data, and a flexible, get-it-done mindset.",
-    "goal_vi": "Phát triển chuyên sâu trong lĩnh vực Digital Marketing, định hướng trở thành một Digital Marketing Manager chuyên nghiệp — đồng hành cùng doanh nghiệp mang lại các giải pháp marketing kỹ thuật số tối ưu.",
-    "goal_en": "Growing deep expertise in Digital Marketing, with the goal of becoming a professional Digital Marketing Manager — partnering with businesses to deliver optimal digital marketing solutions.",
+    "bio_en": "I'm a fresh Marketing graduate from the University of Finance - Marketing (UFM), with a solid foundation in market research, strategic planning, and performance measurement. My thesis scored an excellent 9.0/10, and I've directly optimized campaigns that grew organic traffic by 20%. I bring hands-on project management skills (from proposal and pitching through final acceptance), a sharp eye for data, and a flexible, get-it-done mindset.",
+    "goal": "Phát triển chuyên sâu trong lĩnh vực Digital Marketing, định hướng trở thành một Digital Marketing Manager chuyên nghiệp - đồng hành cùng doanh nghiệp mang lại các giải pháp marketing kỹ thuật số tối ưu.",
+    "goal_vi": "Phát triển chuyên sâu trong lĩnh vực Digital Marketing, định hướng trở thành một Digital Marketing Manager chuyên nghiệp - đồng hành cùng doanh nghiệp mang lại các giải pháp marketing kỹ thuật số tối ưu.",
+    "goal_en": "Growing deep expertise in Digital Marketing, with the goal of becoming a professional Digital Marketing Manager - partnering with businesses to deliver optimal digital marketing solutions.",
     "dob": "27/02/2004",
-    "mbti": "ENTP",
-    "address_vi": "Đường Lâm Hoành, Phường An Lạc (Q. Bình Tân cũ), TP. Hồ Chí Minh",
-    "address_en": "Lâm Hoành Street, An Lạc Ward (former Bình Tân District), Ho Chi Minh City",
+    "dob_vi": "27/02/2004",
+    "dob_en": "27/02/2004",
+    "address": "Đường Lâm Hoành, P. An Lạc (Q. Bình Tân cũ)",
+    "address_vi": "Đường Lâm Hoành, P. An Lạc (Q. Bình Tân cũ)",
+    "address_en": "Lam Hoanh Street, An Lac Ward (former Binh Tan District)",
     "phone": "0384 017 195",
+    "phone_vi": "0384 017 195",
+    "phone_en": "(+84) 384 017 195",
     "phoneIntl": "+84 384 017 195",
+    "phoneIntl_vi": "+84 384 017 195",
+    "phoneIntl_en": "+84 384 017 195",
     "email": "workspace.anhduong24k@gmail.com",
+    "email_vi": "workspace.anhduong24k@gmail.com",
+    "email_en": "workspace.anhduong24k@gmail.com",
     "facebook_url": "https://www.facebook.com/shokun.lav",
+    "facebook_url_vi": "https://www.facebook.com/shokun.lav",
+    "facebook_url_en": "https://www.facebook.com/shokun.lav",
     "linkedin_url": "",
+    "linkedin_url_vi": "",
+    "linkedin_url_en": "",
     "banner": "assets/img/banner-hero.webp",
+    "banner_vi": "assets/img/banner-hero.webp",
+    "banner_en": "assets/img/banner-hero.webp",
+    "mbti": "ENTP",
+    "mbti_vi": "ENTP",
+    "mbti_en": "ENTP",
     "education": {
+      "school": "Trường Đại học Tài chính - Marketing (UFM)",
       "school_vi": "Trường Đại học Tài chính - Marketing (UFM)",
       "school_en": "University of Finance – Marketing (UFM)",
+      "major": "Cử nhân ngành Marketing",
       "major_vi": "Cử nhân ngành Marketing",
       "major_en": "Bachelor's in Marketing",
       "years": "2022 - 2026",
+      "years_vi": "2022 - 2026",
+      "years_en": "2022 - 2026",
       "gpa": "3.1/4.0",
+      "gpa_vi": "3.1/4.0",
+      "gpa_en": "3.1/4.0",
+      "thesis": "Khóa luận tốt nghiệp đạt điểm xuất sắc 9.0/10: \"Phân tích thực trạng và đề xuất giải pháp nhằm hoàn thiện hoạt động Digital Marketing của Công ty TNHH H2 Global Media\".",
       "thesis_vi": "Khóa luận tốt nghiệp đạt điểm xuất sắc 9.0/10: \"Phân tích thực trạng và đề xuất giải pháp nhằm hoàn thiện hoạt động Digital Marketing của Công ty TNHH H2 Global Media\".",
       "thesis_en": "Graduation thesis scored 9.0/10 (Excellent): \"Analyzing the current state and proposing solutions to improve the Digital Marketing activities of H2 Global Media Co., Ltd.\""
     },
@@ -100,10 +132,12 @@
       "title_vi": "Cộng tác viên Quản trị Website",
       "title_en": "Website Administration Collaborator",
       "org_vi": "Thuận Ý Bakery",
-      "org_en": "Thuận Ý Bakery",
+      "org_en": "Thuan Y Bakery",
       "period": "05/2024 - 11/2024",
       "logo": "assets/img/logo-thuanybakery.jpg",
       "workImage": "assets/img/work-thuanybakery.jpg",
+      "context_vi": "Website của Thuận Ý Bakery còn nhiều điểm chạm chưa tối ưu, khiến hành trình mua hàng trực tuyến của khách chưa mượt mà.",
+      "context_en": "Thuận Ý Bakery's website had several friction points that made the online shopping journey less smooth for customers.",
       "tasks_vi": [
         "Phân tích hành trình khách hàng để phát hiện các pain points gây cản trở trải nghiệm trên nền tảng số.",
         "Đề xuất và thực thi phương án thiết kế lại giao diện tập trung vào trải nghiệm người dùng.",
@@ -119,18 +153,18 @@
       ],
       "achievements_en": [
         "Improved the user experience, growing traffic by 10% within 3 months of launch."
-      ],
-      "context_vi": "Website của Thuận Ý Bakery còn nhiều điểm chạm chưa tối ưu, khiến hành trình mua hàng trực tuyến của khách chưa mượt mà.",
-      "context_en": "Thuận Ý Bakery's website had several friction points that made the online shopping journey less smooth for customers."
+      ]
     },
     {
-      "title_vi": "Core-member — Kỹ thuật & Nội dung",
-      "title_en": "Core Member — Technical & Content",
+      "title_vi": "Core-member - Kỹ thuật & Nội dung",
+      "title_en": "Core Member - Technical & Content",
       "org_vi": "CLB Talk & Share",
       "org_en": "Talk & Share Club",
       "period": "06/2024 - 09/2024",
       "logo": "assets/img/logo-clbtalkshare.png",
       "workImage": "assets/img/work-clbtalkshare.jpg",
+      "context_vi": "CLB Talk & Share cần một website chính thức trên WordPress để làm nơi lưu trữ nội dung và tiếp cận thành viên, nhưng chưa có ai phụ trách xây dựng và quản trị.",
+      "context_en": "CLB Talk & Share needed an official WordPress site to host content and reach members, but didn't yet have anyone to build and manage it.",
       "tasks_vi": [
         "Xây dựng cấu trúc và thiết kế bố cục cho website trên nền tảng WordPress.",
         "Biên tập và quản trị nội dung đảm bảo chuẩn SEO cơ bản."
@@ -144,18 +178,18 @@
       ],
       "achievements_en": [
         "Delivered the project on schedule."
-      ],
-      "context_vi": "CLB Talk & Share cần một website chính thức trên WordPress để làm nơi lưu trữ nội dung và tiếp cận thành viên, nhưng chưa có ai phụ trách xây dựng và quản trị.",
-      "context_en": "CLB Talk & Share needed an official WordPress site to host content and reach members, but didn't yet have anyone to build and manage it."
+      ]
     },
     {
-      "title_vi": "Trưởng dự án (Project Leader / Account Lead) — Dự án \"Băng Ghi Hình\"",
-      "title_en": "Project Leader / Account Lead — \"Băng Ghi Hình\" Project",
+      "title_vi": "Trưởng dự án (Project Leader / Account Lead) - Dự án \"Băng Ghi Hình\"",
+      "title_en": "Project Leader / Account Lead - \"Bang Ghi Hinh\" Project",
       "org_vi": "Dự án Truyền thông Xã hội",
       "org_en": "Social Marketing Project",
       "period": "02/2025 - 04/2025",
       "logo": "assets/img/logo-bangghihinh.jpg",
       "workImage": "assets/img/work-bangghihinh.jpg",
+      "context_vi": "Dự án truyền thông xã hội \"Băng Ghi Hình\" cần nguồn tài trợ để triển khai, nhưng chưa có ai phụ trách xuyên suốt từ tìm kiếm, đàm phán đến thực hiện cam kết với nhà tài trợ.",
+      "context_en": "The \"Băng Ghi Hình\" social marketing project needed sponsorship funding to run, but had no one owning the full sponsor journey — from outreach and negotiation through to fulfilling commitments.",
       "tasks_vi": [
         "Lên ý tưởng, thiết kế Proposal dự án chuyên nghiệp và tìm kiếm các nhà tài trợ tiềm năng.",
         "Chịu trách nhiệm đàm phán các gói tài trợ; trực tiếp soạn thảo, theo dõi và hoàn thiện thủ tục ký kết hợp đồng.",
@@ -175,9 +209,7 @@
       "achievements_en": [
         "Streamlined the workflow, lifting operating efficiency by 15%.",
         "Delivered every work item ahead of schedule."
-      ],
-      "context_vi": "Dự án truyền thông xã hội \"Băng Ghi Hình\" cần nguồn tài trợ để triển khai, nhưng chưa có ai phụ trách xuyên suốt từ tìm kiếm, đàm phán đến thực hiện cam kết với nhà tài trợ.",
-      "context_en": "The \"Băng Ghi Hình\" social marketing project needed sponsorship funding to run, but had no one owning the full sponsor journey — from outreach and negotiation through to fulfilling commitments."
+      ]
     },
     {
       "title_vi": "Thực tập sinh Content SEO",
@@ -187,6 +219,8 @@
       "period": "09/2025 - 12/2025",
       "logo": "assets/img/logo-h2global.png",
       "workImage": "assets/img/work-h2global.jpg",
+      "context_vi": "Website ngách Print-on-Demand (POD) của H2 Global Media tại thị trường Mỹ chưa có bộ từ khóa mục tiêu rõ ràng và thứ hạng tìm kiếm tự nhiên còn thấp.",
+      "context_en": "H2 Global Media's Print-on-Demand (POD) website in the US market lacked a clear target-keyword strategy and was underperforming in organic search rankings.",
       "tasks_vi": [
         "Thực hiện nghiên cứu thị trường ngách Print-on-Demand (POD) tại thị trường Mỹ để xác định hành vi tìm kiếm của khách hàng.",
         "Phân tích và xây dựng bộ từ khóa mục tiêu dựa trên ý định người dùng.",
@@ -204,9 +238,7 @@
       "achievements_en": [
         "Ranked 2 keywords in Google's Top 10 and 3 keywords in the Top 100.",
         "Directly contributed to a 20% increase in organic traffic in Q4 2025."
-      ],
-      "context_vi": "Website ngách Print-on-Demand (POD) của H2 Global Media tại thị trường Mỹ chưa có bộ từ khóa mục tiêu rõ ràng và thứ hạng tìm kiếm tự nhiên còn thấp.",
-      "context_en": "H2 Global Media's Print-on-Demand (POD) website in the US market lacked a clear target-keyword strategy and was underperforming in organic search rankings."
+      ]
     }
   ],
   "certificates": [
@@ -214,8 +246,8 @@
       "name_vi": "Khóa đào tạo Content SEO AI MAX Online",
       "name_en": "Content SEO AI MAX Online Training",
       "org": "SEONGON Academy",
-      "project_vi": "Dự án kết khóa: Nghiên cứu các bài viết của đối thủ, đề xuất outline và viết bài chuẩn SEO. Áp dụng AI vào Content SEO để nâng cao hiệu quả bài viết. (Hoàn thành 28/11/2025)",
-      "project_en": "Capstone project: Researched competitor articles, proposed an outline, and wrote SEO-standard content — applying AI to boost content-SEO effectiveness. (Completed 28/11/2025)",
+      "project_vi": "Nghiên cứu các bài viết của đối thủ\nĐề xuất outline và viết bài chuẩn SEO\nÁp dụng AI vào Content SEO để nâng cao hiệu quả bài viết\nHoàn thành 28/11/2025",
+      "project_en": "Researched competitor articles\nProposed an outline and wrote SEO-standard content\nApplied AI to boost content-SEO effectiveness\nCompleted 28/11/2025",
       "images": [
         "assets/img/cert-contentseo.jpg"
       ],
@@ -230,8 +262,8 @@
       "name_vi": "Khóa đào tạo SEO Website Cơ bản",
       "name_en": "Basic SEO Website Training",
       "org": "SEONGON Academy",
-      "project_vi": "Dự án kết khóa: Thực hành cào và chia nhóm từ khoá \"Máy lọc nước\" với bộ từ khoá khá chuẩn, check các yếu tố technical của website để đề xuất tối ưu và lên outline bài viết SEO cơ bản. (Hoàn thành 02/02/2026)",
-      "project_en": "Capstone project: Practiced keyword scraping and clustering for \"water purifier\", building a solid keyword set, auditing technical SEO factors, and drafting a basic SEO content outline. (Completed 02/02/2026)",
+      "project_vi": "Cào và phân nhóm bộ từ khóa \"Máy lọc nước\"\nKiểm tra các yếu tố kỹ thuật (technical) của website\nĐề xuất tối ưu và lên outline bài viết SEO cơ bản\nHoàn thành 02/02/2026",
+      "project_en": "Scraped and clustered a keyword set for \"water purifier\"\nAudited the website's technical SEO factors\nProposed optimizations and drafted a basic SEO content outline\nCompleted 02/02/2026",
       "images": [
         "assets/img/cert-seowebsite.jpg"
       ],
@@ -243,16 +275,16 @@
       ]
     },
     {
-      "name_vi": "Khóa đào tạo Google Ads — Quảng cáo qua nền tảng Google",
-      "name_en": "Google Ads Training — Advertising on the Google Platform",
+      "name_vi": "Khóa đào tạo Google Ads - Quảng cáo qua nền tảng Google",
+      "name_en": "Google Ads Training - Advertising on the Google Platform",
       "org": "SEONGON Academy",
-      "project_vi": "Dự án kết khóa: Thiết lập và mô phỏng quản lý chiến dịch Google Search cho sản phẩm \"Tủ lạnh Inverter Daikin\". Đạt kết quả Tốt, nắm vững cách đọc các chỉ số quảng cáo (CPC, CTR, CPA, ROAS) và tối ưu hóa ngân sách. (Hoàn thành 26/12/2025)",
-      "project_en": "Capstone project: Set up and simulated a Google Search campaign for a \"Daikin Inverter Refrigerator\" product. Achieved a Good grade; gained solid command of ad metrics (CPC, CTR, CPA, ROAS) and budget optimization. (Completed 26/12/2025)",
+      "project_vi": "Thiết lập và mô phỏng quản lý chiến dịch Google Search cho \"Tủ lạnh Inverter Daikin\"\nĐạt kết quả Tốt\nNắm vững cách đọc các chỉ số quảng cáo (CPC, CTR, CPA, ROAS) và tối ưu ngân sách\nHoàn thành 26/12/2025",
+      "project_en": "Set up and simulated a Google Search campaign for the \"Daikin Inverter Refrigerator\"\nAchieved a Good grade\nGained solid command of ad metrics (CPC, CTR, CPA, ROAS) and budget optimization\nCompleted 26/12/2025",
       "images": [
         "assets/img/cert-googleads.jpg"
       ],
       "slideCaptions_vi": [
-        "Thiết lập và mô phỏng quản lý chiến dịch Google Search cho \"Tủ lạnh Inverter Daikin\"\nĐạt kết quả Tốt\nNắm vững cách đọc chỉ số quảng cáo (CPC, CTR, CPA, ROAS) và tối ưu ngân sách\nHoàn thành 26/12/2025"
+        "Thiết lập và mô phỏng quản lý chiến dịch Google Search cho \"Tủ lạnh Inverter Daikin\"\nĐạt kết quả Tốt\nNắm vững cách đọc các chỉ số quảng cáo (CPC, CTR, CPA, ROAS) và tối ưu ngân sách\nHoàn thành 26/12/2025"
       ],
       "slideCaptions_en": [
         "Set up and simulated a Google Search campaign for the \"Daikin Inverter Refrigerator\"\nAchieved a Good grade\nGained solid command of ad metrics (CPC, CTR, CPA, ROAS) and budget optimization\nCompleted 26/12/2025"
@@ -262,8 +294,8 @@
       "name_vi": "Chương trình đào tạo Quảng cáo Google Nâng cao",
       "name_en": "Advanced Google Ads Training Program",
       "org": "SEONGON Academy",
-      "project_vi": "Nâng cao kỹ năng thiết lập, tối ưu và phân tích các chiến dịch Google Ads ở cấp độ chuyên sâu hơn. (Hoàn thành 13/03/2026)",
-      "project_en": "Leveled up campaign setup, optimization, and analysis skills for Google Ads at a more advanced level. (Completed 13/03/2026)",
+      "project_vi": "Nâng cao kỹ năng thiết lập, tối ưu và phân tích chiến dịch Google Ads\nHoàn thành 13/03/2026",
+      "project_en": "Leveled up campaign setup, optimization, and analysis skills for Google Ads\nCompleted 13/03/2026",
       "images": [
         "assets/img/cert-googleads-advanced.jpg"
       ],
@@ -275,11 +307,11 @@
       ]
     },
     {
-      "name_vi": "Canva Academy for SMEs — Chứng nhận hoàn thành 6 chuyên đề",
-      "name_en": "Canva Academy for SMEs — Certificate of Completion (6 sessions)",
+      "name_vi": "Canva Academy for SMEs - Chứng nhận hoàn thành 6 chuyên đề",
+      "name_en": "Canva Academy for SMEs - Certificate of Completion (6 sessions)",
       "org": "Canva Academy for SMEs x Startup and Innovation Hub of Ho Chi Minh City",
-      "project_vi": "Hoàn thành trọn vẹn khóa học: Workshop \"Canva trong tay - HR Khoẻ ngay\", Xây dựng thương hiệu uy tín, Làm việc hiệu quả với Canva AI, Tạo nội dung thu hút trên mạng xã hội, Tăng hiện diện trực tuyến, và Bán hàng hiệu quả với bài trình bày thu hút.",
-      "project_en": "Completed the full program: the \"Canva in Your Hands – Healthy HR\" workshop, Building a Credible Brand, Working Effectively with Canva AI, Creating Engaging Social Media Content, Increasing Online Presence, and Selling Effectively with Engaging Presentations.",
+      "project_vi": "Workshop Online \"Canva trong tay - HR Khoẻ ngay\" | Xây dựng thương hiệu uy tín | Làm việc hiệu quả với Canva AI | Tạo nội dung thu hút trên mạng xã hội | Tăng hiện diện trực tuyến | Bán hàng hiệu quả với bài trình bày thu hút",
+      "project_en": "Workshop: \"Canva in Your Hands – Healthy HR\" | Building a Credible Brand | Working Effectively with Canva AI | Creating Engaging Social Media Content | Increasing Online Presence | Selling Effectively with Engaging Presentations",
       "images": [
         "assets/img/cert-canva-0.jpg",
         "assets/img/cert-canva-1.jpg",
@@ -306,19 +338,50 @@
       ]
     },
     {
-      "name_vi": "Gemini Certified Student — University",
-      "name_en": "Gemini Certified Student — University",
+      "name_vi": "Gemini Certified Student - University",
+      "name_en": "Gemini Certified Student - University",
       "org": "Google for Education",
-      "project_vi": "Chứng nhận đã nắm vững kiến thức, kỹ năng và năng lực cơ bản để sử dụng Google AI (Gemini) hiệu quả trong học tập và công việc. (Cấp ngày 21/12/2025, có giá trị đến 21/12/2028)",
-      "project_en": "Certified for having demonstrated the knowledge, skills, and basic competencies needed to use Google AI (Gemini) effectively for study and work. (Issued 21/12/2025, valid through 21/12/2028)",
+      "project_vi": "Nắm vững kiến thức, kỹ năng và năng lực cơ bản để sử dụng Google AI (Gemini) hiệu quả Áp dụng trong học tập và công việc Cấp ngày 21/12/2025, có giá trị đến 21/12/2028 | Hoàn thành workshop Tech & Innovation - Học thông minh, Nghiên cứu sâu cùng Google AI | Hoàn thành workshop Creative Studio - Học thông minh, Nghiên cứu sâu cùng Google AI | Hoàn thành workshop Lifestyle & Soft Skills - Học thông minh, Nghiên cứu sâu cùng Google AI | Hoàn thành workshop Academic Excellence - Học thông minh, Nghiên cứu sâu cùng Google AI | Hoàn thành workshop Productivity Hub - Học thông minh, Nghiên cứu sâu cùng Google AI",
+      "project_en": "Demonstrated the knowledge, skills, and basic competencies to use Google AI (Gemini) effectively Applied it in study and work Issued 21/12/2025, valid through 21/12/2028 | Completed the Tech & Innovation workshop - Smart learning, deep research with Google AI | Completed the Creative Studio workshop - Smart learning, deep research with Google AI | Completed the Lifestyle & Soft Skills workshop - Smart learning, deep research with Google AI | Completed the Academic Excellence workshop - Smart learning, deep research with Google AI | Completed the Productivity Hub workshop - Smart learning, deep research with Google AI",
       "images": [
-        "assets/img/cert-gemini.jpg"
+        "assets/img/cert-gemini.jpg",
+        "assets/img/cert-gemini-workshop-tech-innovation.jpg",
+        "assets/img/cert-gemini-workshop-creative-studio.jpg",
+        "assets/img/cert-gemini-workshop-lifestyle-softskills.jpg",
+        "assets/img/cert-gemini-workshop-academic-excellence.jpg",
+        "assets/img/cert-gemini-workshop-productivity-hub.jpg"
       ],
       "slideCaptions_vi": [
-        "Nắm vững kiến thức, kỹ năng và năng lực cơ bản để sử dụng Google AI (Gemini) hiệu quả\nÁp dụng trong học tập và công việc\nCấp ngày 21/12/2025, có giá trị đến 21/12/2028"
+        "Nắm vững kiến thức, kỹ năng và năng lực cơ bản để sử dụng Google AI (Gemini) hiệu quả Áp dụng trong học tập và công việc Cấp ngày 21/12/2025, có giá trị đến 21/12/2028",
+        "Hoàn thành workshop Tech & Innovation - Học thông minh, Nghiên cứu sâu cùng Google AI",
+        "Hoàn thành workshop Creative Studio - Học thông minh, Nghiên cứu sâu cùng Google AI",
+        "Hoàn thành workshop Lifestyle & Soft Skills - Học thông minh, Nghiên cứu sâu cùng Google AI",
+        "Hoàn thành workshop Academic Excellence - Học thông minh, Nghiên cứu sâu cùng Google AI",
+        "Hoàn thành workshop Productivity Hub - Học thông minh, Nghiên cứu sâu cùng Google AI"
       ],
       "slideCaptions_en": [
-        "Demonstrated the knowledge, skills, and basic competencies to use Google AI (Gemini) effectively\nApplied it in study and work\nIssued 21/12/2025, valid through 21/12/2028"
+        "Demonstrated the knowledge, skills, and basic competencies to use Google AI (Gemini) effectively Applied it in study and work Issued 21/12/2025, valid through 21/12/2028",
+        "Completed the Tech & Innovation workshop - Smart learning, deep research with Google AI",
+        "Completed the Creative Studio workshop - Smart learning, deep research with Google AI",
+        "Completed the Lifestyle & Soft Skills workshop - Smart learning, deep research with Google AI",
+        "Completed the Academic Excellence workshop - Smart learning, deep research with Google AI",
+        "Completed the Productivity Hub workshop - Smart learning, deep research with Google AI"
+      ]
+    },
+    {
+      "name_vi": "Bootcamp Data Analysis with Python",
+      "name_en": "Bootcamp Data Analysis with Python",
+      "org": "COLE - Digital Skills For Everyone",
+      "project_vi": "Hoàn thành khóa Bootcamp Data Analysis with Python, cấp bởi COLE - Digital Skills For Everyone tại Hà Nội, ngày 19/08/2026",
+      "project_en": "Completed the Bootcamp Data Analysis with Python course, issued by COLE - Digital Skills For Everyone in Ha Noi, on August 19, 2026",
+      "images": [
+        "assets/img/cert-bootcamp-python-cole.jpg"
+      ],
+      "slideCaptions_vi": [
+        "Hoàn thành khóa Bootcamp Data Analysis with Python, cấp bởi COLE - Digital Skills For Everyone tại Hà Nội, ngày 19/08/2026"
+      ],
+      "slideCaptions_en": [
+        "Completed the Bootcamp Data Analysis with Python course, issued by COLE - Digital Skills For Everyone in Ha Noi, on August 19, 2026"
       ]
     }
   ],
@@ -327,6 +390,7 @@
       "key": "design",
       "title_vi": "Design",
       "title_en": "Design",
+      "image": "assets/img/proj-design-1.jpg",
       "images": [
         "assets/img/proj-design-1.jpg",
         "assets/img/proj-design-2.jpg",
@@ -334,63 +398,66 @@
         "assets/img/proj-design-4.jpg",
         "assets/img/proj-design-5.jpg"
       ],
-      "desc_vi": "Thiết kế ấn phẩm truyền thông trên Canva: poster sự kiện thể thao (Red Bull \"Dance Your Style\" – Vietnam vs Japan) và bộ ảnh collage chủ đề du lịch \"Việt Nam – Những chuyến đi...\" giới thiệu Hà Nội, Đà Nẵng, Sài Gòn.",
-      "desc_en": "Communication design work in Canva: a sports-event poster (Red Bull \"Dance Your Style\" – Vietnam vs Japan) and a travel-themed photo collage \"Vietnam – The Journeys...\" featuring Hà Nội, Đà Nẵng and Sài Gòn.",
+      "videos": [],
+      "desc_vi": "Thiết kế ấn phẩm truyền thông trên Canva: poster sự kiện thể thao (Red Bull \"Dance Your Style\" - Vietnam vs Japan) và bộ ảnh collage chủ đề du lịch \"Việt Nam - Những chuyến đi...\" giới thiệu Hà Nội, Đà Nẵng, Sài Gòn.",
+      "desc_en": "Communication design work in Canva: a sports-event poster (Red Bull \"Dance Your Style\" - Vietnam vs Japan) and a travel-themed photo collage \"Vietnam - The Journeys...\" featuring Hà Nội, Đà Nẵng and Sài Gòn.",
+      "brief_vi": "Đề bài: Cần ấn phẩm truyền thông bắt mắt cho 2 chủ đề khác nhau - sự kiện thể thao và giới thiệu du lịch. \nCách làm: Lên bố cục, chọn tông màu và hình ảnh phù hợp từng chủ đề, thiết kế trên Canva. \nSản phẩm: Poster sự kiện Red Bull \"Dance Your Style\" (Vietnam vs Japan) và bộ ảnh collage du lịch giới thiệu Hà Nội, Đà Nẵng, Sài Gòn (TP. HCM).",
+      "brief_en": "Brief: Create eye-catching visuals for two very different themes - a sports event and a travel showcase. \nApproach: Shaped the layout, color palette and imagery to fit each theme, designed in Canva. \nOutput: A Red Bull \"Dance Your Style\" (Vietnam vs Japan) event poster and a travel photo-collage series introducing Ha Noi, Da Nang and Sai Gon (HCM City).",
       "slideCaptions_vi": [
-        "Poster Red Bull \"Dance Your Style\" (Vietnam vs Japan).",
-        "Bìa collage du lịch \"Việt Nam – Những chuyến đi...\".",
-        "Banner Hà Nội – nét đẹp nghìn năm văn hiến.",
-        "Banner Đà Nẵng – Cầu Vàng, biển Mỹ Khê.",
-        "Banner Sài Gòn – \"Hòn ngọc Viễn Đông\"."
+        "Poster sự kiện thể thao Red Bull \"Dance Your Style\" (Vietnam vs Japan)",
+        "Ảnh bìa bộ collage du lịch \"Việt Nam – Những chuyến đi...\"",
+        "Banner Hà Nội",
+        "Banner Đà Nẵng",
+        "Banner Sài Gòn"
       ],
       "slideCaptions_en": [
-        "Red Bull \"Dance Your Style\" event poster.",
-        "Cover for the \"Vietnam – The Journeys...\" travel collage.",
-        "Hà Nội banner – a thousand years of heritage.",
-        "Đà Nẵng banner – Golden Bridge, Mỹ Khê beach.",
-        "Sài Gòn banner – the \"Pearl of the Far East\"."
+        "Sports-event poster for Red Bull \"Dance Your Style\" (Vietnam vs Japan)",
+        "Cover artwork for the travel collage series \"Vietnam – The Journeys...\"",
+        "Ha Noi banner",
+        "Da Nang banner",
+        "Sai Gon banner"
       ],
-      "canvaUrls": [],
-      "brief_vi": "Đề bài: cần ấn phẩm truyền thông bắt mắt cho 2 chủ đề khác nhau — sự kiện thể thao và giới thiệu du lịch. Cách làm: lên bố cục, chọn tông màu và hình ảnh phù hợp từng chủ đề, thiết kế trên Canva. Sản phẩm: poster sự kiện Red Bull \"Dance Your Style\" (Vietnam vs Japan) và bộ ảnh collage du lịch giới thiệu Hà Nội, Đà Nẵng, Sài Gòn.",
-      "brief_en": "Brief: create eye-catching visuals for two very different themes — a sports event and a travel showcase. Approach: shaped the layout, color palette and imagery to fit each theme, designed in Canva. Output: a Red Bull \"Dance Your Style\" (Vietnam vs Japan) event poster and a travel photo-collage series introducing Hà Nội, Đà Nẵng and Sài Gòn."
+      "canvaUrls": []
     },
     {
       "key": "edit",
       "title_vi": "Edit",
       "title_en": "Edit",
+      "image": "",
       "images": [],
       "videos": [
         {
-          "label_vi": "Xem Daily Vlog trên TikTok",
-          "label_en": "Watch Daily Vlog on TikTok",
           "url": "https://www.tiktok.com/@hynone101/video/7630860174923697429?is_from_webapp=1&sender_device=pc",
-          "thumb": "assets/img/proj-edit-dailyvlog.jpg"
+          "thumb": "assets/img/proj-edit-dailyvlog.jpg",
+          "label_vi": "Xem \"Daily Vlog\" trên TikTok.",
+          "label_en": "Watch \"Daily Vlog\" on TikTok."
         },
         {
-          "label_vi": "Xem Graduation Day trên TikTok",
-          "label_en": "Watch Graduation Day on TikTok",
           "url": "https://www.tiktok.com/@hynone101/video/7631996118208957704?is_from_webapp=1&sender_device=pc",
-          "thumb": "assets/img/proj-edit-graduationday.jpg"
+          "thumb": "assets/img/proj-edit-graduationday.jpg",
+          "label_vi": "Xem \"Graduation Day\" trên TikTok.",
+          "label_en": "Watch \"Graduation Day\" on TikTok."
         }
       ],
-      "desc_vi": "Dựng và biên tập video ngắn cho kênh TikTok cá nhân (vlog \"Daily Vlog\", \"Graduation Day\"), lên nội dung và chỉnh sửa video đều đặn cho kênh.",
-      "desc_en": "Shot and edited short-form videos for a personal TikTok channel (\"Daily Vlog\", \"Graduation Day\"), planning and cutting content on a regular cadence.",
+      "desc_vi": "Dựng và biên tập video ngắn cho kênh TikTok cá nhân, lên nội dung và chỉnh sửa video đều đặn cho kênh.",
+      "desc_en": "Shot and edited short-form videos for a personal TikTok channel, planning and cutting content on a regular cadence.",
+      "brief_vi": "Đề bài: Duy trì đều đặn nội dung video ngắn cho kênh TikTok cá nhân. Cách làm: Lên ý tưởng, quay và dựng theo lịch cố định. Sản phẩm: Các video \"Daily Vlog\", \"Graduation Day\".",
+      "brief_en": "Brief: Keep a personal TikTok channel posting short-form video on a steady cadence. Approach: Planned, shot and edited on a fixed schedule. Output: Videos like \"Daily Vlog\" and \"Graduation Day\".",
       "slideCaptions_vi": [
         "Xem \"Daily Vlog\" trên TikTok.",
-        "Xem \"Graduation Day\" trên TikTok — video kỷ niệm ngày tốt nghiệp."
+        "Xem \"Graduation Day\" trên TikTok."
       ],
       "slideCaptions_en": [
         "Watch \"Daily Vlog\" on TikTok.",
-        "Watch \"Graduation Day\" on TikTok — a look back at graduation day."
+        "Watch \"Graduation Day\" on TikTok."
       ],
-      "canvaUrls": [],
-      "brief_vi": "Đề bài: duy trì đều đặn nội dung video ngắn cho kênh TikTok cá nhân. Cách làm: lên ý tưởng, quay và dựng theo lịch cố định. Sản phẩm: các video \"Daily Vlog\", \"Graduation Day\".",
-      "brief_en": "Brief: keep a personal TikTok channel posting short-form video on a steady cadence. Approach: planned, shot and edited on a fixed schedule. Output: videos like \"Daily Vlog\" and \"Graduation Day\"."
+      "canvaUrls": []
     },
     {
       "key": "performance",
       "title_vi": "Performance",
       "title_en": "Performance",
+      "image": "assets/img/proj-performance-1.jpg",
       "images": [
         "assets/img/proj-performance-1.jpg",
         "assets/img/proj-performance-5.jpg",
@@ -398,30 +465,32 @@
         "assets/img/proj-performance-3.jpg",
         "assets/img/proj-performance-4.jpg"
       ],
-      "desc_vi": "Gồm 2 phần: (1) quản trị Fanpage và tài nguyên quảng cáo (Facebook Ads, TikTok Ads) cho kênh Upper Moodyz; (2) case study chạy Google Ads (Search, Performance Max) thực hiện trong khóa đào tạo Google Ads tại SEONGON Academy.",
-      "desc_en": "Two parts: (1) managing the Fanpage and ad resources (Facebook Ads, TikTok Ads) for the Upper Moodyz channel; (2) a Google Ads case study (Search, Performance Max) completed as part of the Google Ads training course at SEONGON Academy.",
+      "videos": [],
+      "desc_vi": "Gồm 2 phần: (1) Quản trị Fanpage và tài nguyên quảng cáo (Facebook Ads, TikTok Ads) cho kênh Upper Moodyz; (2) Case study chạy Google Ads (Search, Performance Max) thực hiện trong khóa đào tạo Google Ads tại SEONGON Academy.",
+      "desc_en": "Two parts: (1) Managing the Fanpage and ad resources (Facebook Ads, TikTok Ads) for the Upper Moodyz channel; (2) A Google Ads case study (Search, Performance Max) completed as part of the Google Ads training course at SEONGON Academy.",
+      "brief_vi": "Đề bài: Kênh Upper Moodyz cần vận hành Fanpage và tài nguyên quảng cáo bài bản + Thực hành chạy Google Ads qua một khóa đào tạo chuyên sâu. Cách làm: (1) Quản trị Fanpage, thiết lập Facebook Ads & TikTok Ads cho Upper Moodyz; (2) Thực hiện case study Google Ads (Search, Performance Max) trong khóa đào tạo tại SEONGON Academy. Kết quả: Fanpage và quảng cáo của Upper Moodyz vận hành liên tục; hoàn thành case study Google Ads đạt kết quả tốt.",
+      "brief_en": "Brief: Upper Moodyz channel needs to operate its Fanpage and advertising assets systematically + Gain hands-on experience running Google Ads through an intensive training course. Approach: (1) Managed the Fanpage, set up Facebook Ads & TikTok Ads for Upper Moodyz; (2) Executed a Google Ads case study (Search, Performance Max) during a training course at SEONGON Academy. Output: Upper Moodyz's Fanpage and ad campaigns operated continuously; completed the Google Ads case study with good results.",
       "slideCaptions_vi": [
-        "Quản trị Fanpage & Facebook Ads – Upper Moodyz.",
-        "Quản lý TikTok Ads cho Upper Moodyz Store.",
-        "Case study Google Ads (SEONGON) – Performance Max, tủ lạnh Smart Inverter.",
-        "Case study Google Ads (SEONGON) – Search Ads, tủ lạnh LG Inverter.",
-        "Case study Google Ads (SEONGON) – Search Ads, điều hoà Daikin."
+        "Quản trị Fanpage & Facebook Ads – Upper Moodyz",
+        "Quản lý TikTok Ads cho Upper Moodyz Store",
+        "Case study Google Ads (SEONGON) – Performance Max, tủ lạnh Smart Inverter",
+        "Case study Google Ads (SEONGON) – Search Ads, tủ lạnh LG Inverter",
+        "Case study Google Ads (SEONGON) – Search Ads, điều hoà Daikin"
       ],
       "slideCaptions_en": [
-        "Managing the Fanpage & Facebook Ads – Upper Moodyz.",
-        "Managing TikTok Ads for Upper Moodyz Store.",
-        "SEONGON Google Ads case study – Performance Max, Smart Inverter fridges.",
-        "SEONGON Google Ads case study – Search Ads, LG Inverter fridge.",
-        "SEONGON Google Ads case study – Search Ads, Daikin AC."
+        "Managing the Fanpage & Facebook Ads – Upper Moodyz",
+        "Managing TikTok Ads for Upper Moodyz Store",
+        "SEONGON Google Ads case study – Performance Max, Smart Inverter fridges",
+        "SEONGON Google Ads case study – Search Ads, LG Inverter fridge",
+        "SEONGON Google Ads case study – Search Ads, Daikin AC"
       ],
-      "canvaUrls": [],
-      "brief_vi": "Đề bài: 2 mảng việc riêng biệt — kênh Upper Moodyz cần vận hành Fanpage và tài nguyên quảng cáo bài bản; song song đó là nhu cầu thực hành chạy Google Ads qua một khóa đào tạo chuyên sâu. Cách làm: (1) quản trị Fanpage, thiết lập Facebook Ads & TikTok Ads cho Upper Moodyz; (2) thực hiện case study Google Ads (Search, Performance Max) trong khóa đào tạo tại SEONGON Academy. Kết quả: Fanpage và quảng cáo của Upper Moodyz vận hành liên tục; hoàn thành case study Google Ads đạt kết quả tốt.",
-      "brief_en": "Brief: two separate pieces of work — the Upper Moodyz channel needed its Fanpage and ad resources properly run, alongside hands-on Google Ads practice through a dedicated training course. Approach: (1) managed the Fanpage and set up Facebook Ads & TikTok Ads for Upper Moodyz; (2) completed a Google Ads case study (Search, Performance Max) as part of the SEONGON Academy training course. Result: Upper Moodyz's Fanpage and ads run continuously; the Google Ads case study was completed with a good result."
+      "canvaUrls": []
     },
     {
       "key": "seo",
       "title_vi": "SEO",
       "title_en": "SEO",
+      "image": "assets/img/proj-seo-1.jpg",
       "images": [
         "assets/img/proj-seo-1.jpg",
         "assets/img/proj-seo-2.jpg",
@@ -429,30 +498,32 @@
         "assets/img/proj-seo-4.jpg",
         "assets/img/proj-seo-5.jpg"
       ],
+      "videos": [],
       "desc_vi": "Nghiên cứu từ khóa, thiết lập bộ từ khóa mục tiêu, kiểm tra on-page và lên outline nội dung chuẩn SEO cho nhiều ngành hàng khác nhau.",
       "desc_en": "Keyword research, target keyword-set building, on-page audits, and SEO content outlines across several product categories.",
+      "brief_vi": "Đề bài: Nhiều website ngành hàng khác nhau cần bộ từ khóa mục tiêu rõ ràng để tăng khả năng được tìm thấy trên Google. \nCách làm: Nghiên cứu ý định tìm kiếm, xây bộ từ khóa mục tiêu theo từng ngành, rà soát on-page và lên outline nội dung chuẩn SEO. \nSản phẩm: Bộ từ khóa và outline nội dung sẵn sàng triển khai cho từng ngành hàng.",
+      "brief_en": "Brief: Several websites across different industries needed a clear target-keyword set to become more discoverable on Google. \nApproach: Researched search intent, built target keyword sets per industry, audited on-page SEO, and drafted SEO-ready content outlines. \nOutput: Keyword sets and content outlines ready to execute for each industry.",
       "slideCaptions_vi": [
-        "Từ khóa \"máy lọc nước\" kèm dữ liệu lượng tìm kiếm.",
-        "Audit SEO kỹ thuật cho website Nội thất KDT.",
-        "Bộ từ khóa đã phân nhóm, kèm lượng tìm kiếm.",
-        "Outline nội dung ánh xạ theo search intent.",
-        "Outline SEO — ví dụ bài đánh giá gói V-Sport (TV360)."
+        "Cào & liệt kê từ khóa ngành hàng \"máy lọc nước\", kèm dữ liệu lượng tìm kiếm",
+        "Audit kỹ thuật SEO on-sitecho website Nội thất KDT",
+        "Bộ từ khóa đã phân nhóm hoàn chỉnh kèm tổng lượng tìm kiếm và loại trang đích",
+        "Lên outline nội dung kèm ánh xạ từ khóa theo từng search intent",
+        "Outline bài viết SEO hoàn chỉnh - Bài đánh giá gói V-Sport của TV360"
       ],
       "slideCaptions_en": [
-        "Keyword list for \"water purifier\" with search volume.",
-        "Technical SEO audit for the Nội Thất KDT site.",
-        "Clustered keyword set with search volume.",
-        "Content outline mapped to search intent.",
-        "SEO outline — example: a V-Sport review (TV360)."
+        "Scraped and listed keywords for the \"water purifier\" category, with search-volume data",
+        "Technical SEO audit for the KDT Furniture website",
+        "Finalized, clustered keyword set with total search volume and matching page type",
+        "Content outline mapping keywords to each search intent",
+        "A complete SEO content outline - A review article for TV360's V-Sport package"
       ],
-      "canvaUrls": [],
-      "brief_vi": "Đề bài: nhiều website ngành hàng khác nhau cần bộ từ khóa mục tiêu rõ ràng để tăng khả năng được tìm thấy trên Google. Cách làm: nghiên cứu ý định tìm kiếm, xây bộ từ khóa mục tiêu theo từng ngành, rà soát on-page và lên outline nội dung chuẩn SEO. Sản phẩm: bộ từ khóa và outline nội dung sẵn sàng triển khai cho từng ngành hàng.",
-      "brief_en": "Brief: several websites across different industries needed a clear target-keyword set to become more discoverable on Google. Approach: researched search intent, built target keyword sets per industry, audited on-page SEO, and drafted SEO-ready content outlines. Output: keyword sets and content outlines ready to execute for each industry."
+      "canvaUrls": []
     },
     {
       "key": "account",
       "title_vi": "Account",
       "title_en": "Account",
+      "image": "assets/img/proj-account-1.jpg",
       "images": [
         "assets/img/proj-account-1.jpg",
         "assets/img/proj-account-2.jpg",
@@ -460,81 +531,86 @@
       ],
       "videos": [
         {
-          "label_vi": "Xem video tổng kết dự án Băng Ghi Hình",
-          "label_en": "Watch the Băng Ghi Hình project wrap-up video",
           "url": "https://youtu.be/_8Hc-VjkDUk",
-          "thumb": "https://i.ytimg.com/vi/_8Hc-VjkDUk/hqdefault.jpg"
+          "thumb": "https://i.ytimg.com/vi/_8Hc-VjkDUk/hqdefault.jpg",
+          "label_vi": "Xem video tổng kết dự án Băng Ghi Hình",
+          "label_en": "Watch the Bang Ghi Hinh project wrap-up video"
         }
       ],
-      "desc_vi": "Vai trò: kết nối doanh nghiệp, đảm bảo quyền lợi nhà tài trợ. Quy trình: Project Proposal → Tìm nhà tài trợ → Gửi mail mời tài trợ → Đàm phán → Ký kết → Triển khai → Trả quyền lợi tài trợ (dự án \"Băng Ghi Hình\").",
-      "desc_en": "Role: connecting sponsors and businesses, safeguarding sponsor benefits. Process: Project Proposal → Sponsor sourcing → Outreach emails → Negotiation → Contract signing → Execution → Sponsor benefit delivery (the \"Băng Ghi Hình\" project).",
+      "desc_vi": "Vai trò: Kết nối doanh nghiệp, đảm bảo quyền lợi nhà tài trợ. Quy trình: Project Proposal → Tìm nhà tài trợ → Gửi mail mời tài trợ → Đàm phán → Ký kết → Triển khai → Trả quyền lợi tài trợ (dự án \"Băng Ghi Hình\").",
+      "desc_en": "Role: Connecting sponsors and businesses, safeguarding sponsor benefits. Process: Project Proposal → Sponsor sourcing → Outreach emails → Negotiation → Contract signing → Execution → Sponsor benefit delivery (the \"Bang Ghi Hinh\" project).",
+      "brief_vi": "Đề bài: Dự án \"Băng Ghi Hình\" cần tài trợ và một người quản lý quan hệ nhà tài trợ chuyên nghiệp, xuyên suốt. \nCách làm: Project Proposal → Tìm nhà tài trợ → Gửi mail mời tài trợ → Đàm phán → Ký kết → Triển khai → Trả quyền lợi tài trợ. \nKết quả: Tối ưu quy trình vận hành, nâng hiệu suất lên 15%, hoàn thành toàn bộ hạng mục trước thời hạn.",
+      "brief_en": "Brief: The \"Bang Ghi Hinh\" project needed sponsorship funding and one person to professionally own the sponsor relationship end to end. \nApproach: Project proposal → Sourcing sponsors → Outreach emails → Negotiation → Contract sign-off → Execution → Delivering sponsor benefits. \nResult: Streamlined the workflow, lifting operating efficiency by 15%, with every item delivered ahead of schedule.",
       "slideCaptions_vi": [
-        "Bìa hồ sơ dự án \"Băng Ghi Hình\" gửi nhà tài trợ.",
-        "Email mời tài trợ gửi doanh nghiệp.",
-        "Hợp đồng tài trợ ký với NET CORP (NET ENGLISH).",
-        "Xem video tổng kết dự án."
+        "Hồ sơ dự án \"Băng Ghi Hình\" - Tài liệu giới thiệu dự án gửi nhà tài trợ",
+        "Email thư mời tài trợ gửi đến doanh nghiệp",
+        "Hợp đồng tài trợ đã ký kết với Công ty NET CORP (thương hiệu NET ENGLISH)",
+        "Xem video tổng kết dự án Băng Ghi Hình"
       ],
       "slideCaptions_en": [
-        "Cover of the \"Băng Ghi Hình\" sponsor pitch deck.",
-        "Sponsor-outreach email to businesses.",
-        "Signed sponsorship contract with NET CORP.",
-        "Watch the project wrap-up video."
+        "The \"Bang Ghi Hinh\" project proposal - The pitch deck sent to prospective sponsors",
+        "Sponsor-outreach email sent to businesses",
+        "Signed sponsorship contract with NET CORP (the NET ENGLISH brand)",
+        "Watch the Bang Ghi Hinh project wrap-up video"
       ],
-      "canvaUrls": [],
-      "brief_vi": "Đề bài: dự án \"Băng Ghi Hình\" cần tài trợ và một người quản lý quan hệ nhà tài trợ chuyên nghiệp, xuyên suốt. Cách làm: Project Proposal → tìm nhà tài trợ → gửi mail mời tài trợ → đàm phán → ký kết → triển khai → trả quyền lợi tài trợ. Kết quả: tối ưu quy trình vận hành, nâng hiệu suất lên 15%, hoàn thành toàn bộ hạng mục trước thời hạn.",
-      "brief_en": "Brief: the \"Băng Ghi Hình\" project needed sponsorship funding and one person to professionally own the sponsor relationship end to end. Approach: project proposal → sourcing sponsors → outreach emails → negotiation → contract sign-off → execution → delivering sponsor benefits. Result: streamlined the workflow, lifting operating efficiency by 15%, with every item delivered ahead of schedule."
+      "canvaUrls": []
     },
     {
       "key": "ecommerce",
       "title_vi": "E-Commerce",
       "title_en": "E-Commerce",
+      "image": "assets/img/proj-ecommerce-1.jpg",
       "images": [
         "assets/img/proj-ecommerce-1.jpg",
         "assets/img/proj-ecommerce-2.jpg"
       ],
+      "videos": [],
       "desc_vi": "Vận hành gian hàng TikTok Shop và Shopee cho Upper Moodyz Shop: tối ưu sản phẩm, quản lý danh mục và mã giảm giá, thiết lập quảng cáo trên sàn và theo dõi chỉ số đơn hàng.",
       "desc_en": "Ran the Upper Moodyz Shop storefront on TikTok Shop and Shopee: product optimization, category and discount-code management, on-platform ad setup, and order-metric tracking.",
+      "brief_vi": "Đề bài: Gian hàng Upper Moodyz Shop cần vận hành ổn định trên 2 sàn TikTok Shop và Shopee. \nCách làm: Tối ưu sản phẩm, quản lý danh mục và mã giảm giá, thiết lập quảng cáo trên sàn, theo dõi chỉ số đơn hàng. \nSản phẩm: Gian hàng vận hành ổn định, liên tục trên cả 2 nền tảng.",
+      "brief_en": "Brief: The Upper Moodyz Shop storefront needed stable operations across two marketplaces, TikTok Shop and Shopee. \nApproach: Optimized product listings, managed categories and discount codes, set up on-platform ads, and tracked order metrics. \nOutput: A storefront running steadily on both platforms.",
       "slideCaptions_vi": [
-        "TikTok Shop – Upper Moodyz Store.",
-        "Shopee – Upper Moodyz Shop."
+        "Gian hàng TikTok Shop - Upper Moodyz Store, quản lý sản phẩm và ưu đãi vận chuyển",
+        "Gian hàng Shopee - Upper Moodyz Shop"
       ],
       "slideCaptions_en": [
-        "Upper Moodyz Store's TikTok Shop.",
-        "Upper Moodyz Shop's Shopee storefront."
+        "Upper Moodyz Store's TikTok Shop storefront - product listings and shipping promotions",
+        "Upper Moodyz Shop's Shopee storefront"
       ],
-      "canvaUrls": [],
-      "brief_vi": "Đề bài: gian hàng Upper Moodyz Shop cần vận hành ổn định trên 2 sàn TikTok Shop và Shopee. Cách làm: tối ưu sản phẩm, quản lý danh mục và mã giảm giá, thiết lập quảng cáo trên sàn, theo dõi chỉ số đơn hàng. Sản phẩm: gian hàng vận hành ổn định, liên tục trên cả 2 nền tảng.",
-      "brief_en": "Brief: the Upper Moodyz Shop storefront needed stable operations across two marketplaces, TikTok Shop and Shopee. Approach: optimized product listings, managed categories and discount codes, set up on-platform ads, and tracked order metrics. Output: a storefront running steadily on both platforms."
+      "canvaUrls": []
     },
     {
       "key": "planning",
       "title_vi": "Planning",
       "title_en": "Planning",
+      "image": "assets/img/proj-planning-1.jpg",
       "images": [
         "assets/img/proj-planning-1.jpg",
         "assets/img/proj-planning-2.jpg"
       ],
+      "videos": [],
       "desc_vi": "Xây dựng kế hoạch chiến lược marketing bài bản: (1) \"Trade Marketing Proposal\" cho BABÉ Laboratorios (Big Idea \"BABÉ – Điểm dừng cho da dầu mụn\"), vai trò Nhóm trưởng dẫn dắt nhóm 3 người; (2) \"IMC Plan\" cho bánh Karo Richy — kế hoạch truyền thông tích hợp thực hiện solo, từ market context đến content & KPI.",
-      "desc_en": "Built end-to-end strategic marketing plans: (1) a Trade Marketing Proposal for BABÉ Laboratorios (Big Idea: \"BABÉ – The Stop for Oily, Acne-Prone Skin\"), as Team Leader of a 3-person team; (2) a full Integrated Marketing Communications (IMC) Plan for Karo Richy crackers, completed solo end-to-end — from market context through content and KPIs.",
+      "desc_en": "Built end-to-end strategic marketing plans: (1) A Trade Marketing Proposal for BABÉ Laboratorios (Big Idea: \"BABÉ – The Stop for Oily, Acne-Prone Skin\"), as Team Leader of a 3-person team; (2) A full Integrated Marketing Communications (IMC) Plan for Karo Richy crackers, completed solo end-to-end — from market context through content and KPIs.",
+      "brief_vi": "Đề bài: 2 bài toán chiến lược khác nhau — BABÉ Laboratorios cần Trade Marketing Proposal cho dòng sản phẩm da dầu mụn; Bánh Karo Richy cần một kế hoạch truyền thông tích hợp (IMC) hoàn chỉnh. Cách làm: (1) Làm Nhóm trưởng dẫn dắt nhóm 3 người xây Big Idea \"BABÉ – Điểm dừng cho da dầu mụn\"; (2) Tự thực hiện solo từ market context đến content & KPI. Sản phẩm: 2 bản kế hoạch hoàn chỉnh, sẵn sàng trình bày.",
+      "brief_en": "Brief: Two distinct strategy challenges — a Trade Marketing Proposal for BABÉ Laboratorios' oily/acne-prone skin line, and a full Integrated Marketing Communications (IMC) plan for Karo Richy cakes. Approach: (1) Led a 3-person team as team lead to build the Big Idea \"BABÉ – A Stop for Oily, Acne-Prone Skin\"; (2) Built the IMC plan solo, from market context through content and KPIs. Output: Two complete, presentation-ready plans.",
       "slideCaptions_vi": [
-        "Trade Marketing Proposal – BABÉ Laboratorios.",
-        "IMC Plan – Karo Richy."
+        "Trade Marketing Proposal - BABÉ Laboratorios",
+        "IMC Plan - Karo Richy"
       ],
       "slideCaptions_en": [
-        "Trade Marketing Proposal – BABÉ Laboratorios.",
-        "IMC Plan – Karo Richy."
+        "Trade Marketing Proposal - BABÉ Laboratorios",
+        "IMC Plan - Karo Richy"
       ],
       "canvaUrls": [
         "https://canva.link/laboratorios-babe-tm-proposal",
         "https://canva.link/karo-imc-plan"
-      ],
-      "brief_vi": "Đề bài: 2 bài toán chiến lược khác nhau — BABÉ Laboratorios cần Trade Marketing Proposal cho dòng sản phẩm da dầu mụn; bánh Karo Richy cần một kế hoạch truyền thông tích hợp (IMC) hoàn chỉnh. Cách làm: (1) làm Nhóm trưởng dẫn dắt nhóm 3 người xây Big Idea \"BABÉ – Điểm dừng cho da dầu mụn\"; (2) tự thực hiện solo từ market context đến content & KPI. Sản phẩm: 2 bản kế hoạch hoàn chỉnh, sẵn sàng trình bày.",
-      "brief_en": "Brief: two distinct strategy challenges — a Trade Marketing Proposal for BABÉ Laboratorios' oily/acne-prone skin line, and a full Integrated Marketing Communications (IMC) plan for Karo Richy cakes. Approach: (1) led a 3-person team as team lead to build the Big Idea \"BABÉ – A Stop for Oily, Acne-Prone Skin\"; (2) built the IMC plan solo, from market context through content and KPIs. Output: two complete, presentation-ready plans."
+      ]
     },
     {
       "key": "aiagent",
       "title_vi": "AI Agent",
       "title_en": "AI Agent",
+      "image": "assets/img/proj-aiagent-1.jpg",
       "images": [
         "assets/img/proj-aiagent-1.jpg",
         "assets/img/proj-aiagent-2.jpg",
@@ -542,25 +618,62 @@
         "assets/img/proj-aiagent-4.jpg",
         "assets/img/proj-aiagent-5.jpg"
       ],
-      "desc_vi": "Ứng dụng AI agent (Claude) vào quy trình marketing: tự sản xuất content on-brand, tự động đăng bài lên mạng xã hội, dựng landing page thu lead cho sự kiện CLB Talk & Share, và xây \"live artifact\" quản lý công việc cá nhân theo thời gian thực. Chính trang portfolio này cũng là một sản phẩm được xây dựng theo cách đó.",
-      "desc_en": "Applying an AI agent (Claude) across the marketing workflow: producing on-brand content automatically, auto-publishing to social media, building a lead-gen landing page for a CLB Talk & Share event, and building a real-time personal \"live artifact\" for task management. This very portfolio site is itself a product built the same way.",
+      "videos": [],
+      "desc_vi": "Ứng dụng AI Agent (Claude) vào quy trình marketing: tự sản xuất content on-brand, tự động đăng bài lên mạng xã hội, dựng Landing Page thu lead cho sự kiện CLB Talk & Share, và xây \"Live Artifact\" quản lý công việc cá nhân theo thời gian thực. Chính trang portfolio này cũng là một sản phẩm được xây dựng theo cách đó.",
+      "desc_en": "Applying an AI Agent (Claude) across the marketing workflow: producing on-brand content automatically, auto-publishing to social media, building a lead-gen landing page for a Talk & Share Club event, and building a real-time personal \"Live Artifact\" for task management. This very portfolio site is itself a product built the same way.",
+      "brief_vi": "Đề bài: Muốn ứng dụng AI vào công việc marketing thực tế thay vì chỉ dừng ở lý thuyết. \nCách làm: Dùng AI Agent (Claude) để tự sản xuất content on-brand, tự động đăng bài mạng xã hội, dựng Landing Page thu lead cho sự kiện CLB Talk & Share và xây \"Live Artifact\" quản lý công việc theo thời gian thực. \nSản phẩm: Chính trang portfolio này - được xây dựng theo đúng cách đó - là minh chứng sống động nhất.",
+      "brief_en": "Brief: Wanted to apply AI to real marketing work rather than just the theory. \nApproach: Used an AI Agent (Claude) to auto-produce on-brand content, auto-publish to social media, build a lead-gen landing page for a Talk & Share Club event, and build a real-time \"Live Artifact\" for task management. \nOutput: This very portfolio site - built the same way - is the clearest proof of it.",
       "slideCaptions_vi": [
-        "\"Live Artifact\" – bảng công việc thời gian thực.",
-        "AI agent hỗ trợ sản xuất content on-brand.",
-        "Content tự động đăng lên Fanpage.",
-        "Tự động đăng bài đa nền tảng qua Upload-Post.",
-        "Landing page sự kiện CLB Talk & Share."
+        "Live Artifact - Bảng theo dõi công việc cá nhân theo thời gian thực xây bằng AI Agent",
+        "AI Agent hỗ trợ sản xuất content on-brand",
+        "Nội dung được tự động đăng lên Fanpage sau khi AI Agent sản xuất xong",
+        "Lên lịch & tự động đăng bài đa nền tảng qua Upload-Post",
+        "Landing Page thu lead cho hội thảo của CLB Talk & Share"
       ],
       "slideCaptions_en": [
-        "\"Live Artifact\" – a real-time task dashboard.",
-        "AI agent producing on-brand content.",
-        "Content auto-published to the Fanpage.",
-        "Auto-publishing across platforms via Upload-Post.",
-        "Landing page for the Talk & Share Club event."
+        "A real-time personal task dashboard - The \"Live Artifact\" built with an AI Agent",
+        "AI Agent producing on-brand content",
+        "Content auto-published to the Fanpage after the AI Agent finishes producing it",
+        "Scheduling and auto-publishing across platforms via Upload-Post",
+        "Lead-gen landing page for the Talk & Share Club seminar"
       ],
-      "canvaUrls": [],
-      "brief_vi": "Đề bài: muốn ứng dụng AI vào công việc marketing thực tế thay vì chỉ dừng ở lý thuyết. Cách làm: dùng AI agent (Claude) để tự sản xuất content on-brand, tự động đăng bài mạng xã hội, dựng landing page thu lead cho sự kiện CLB Talk & Share, và xây \"live artifact\" quản lý công việc theo thời gian thực. Sản phẩm: chính trang portfolio này — được xây dựng theo đúng cách đó — là minh chứng sống động nhất.",
-      "brief_en": "Brief: wanted to apply AI to real marketing work rather than just the theory. Approach: used an AI agent (Claude) to auto-produce on-brand content, auto-publish to social media, build a lead-gen landing page for a CLB Talk & Share event, and build a real-time \"live artifact\" for task management. Output: this very portfolio site — built the same way — is the clearest proof of it."
+      "canvaUrls": []
+    },
+    {
+      "key": "aichatbot",
+      "title_vi": "AI Chatbot Suite (Zalo & Discord)",
+      "title_en": "AI Chatbot Suite (Zalo & Discord)",
+      "image": "assets/img/proj-aichatbot-1.jpg",
+      "images": [
+        "assets/img/proj-aichatbot-1.jpg",
+        "assets/img/proj-aichatbot-2.jpg",
+        "assets/img/proj-aichatbot-3.jpg",
+        "assets/img/proj-aichatbot-4.jpg",
+        "assets/img/proj-aichatbot-5.jpg",
+        "assets/img/proj-aichatbot-6.jpg"
+      ],
+      "videos": [],
+      "desc_vi": "Gồm 2 chatbot tự build bằng n8n: (1) Zalo Chatbot - nạp dữ liệu đầu vào để chatbot truy xuất và trả lời chính xác khi được hỏi đúng phạm vi dữ liệu; các câu hỏi ngoài phạm vi được chuyển cho AI Agent (Google Gemini Flash) xử lý; vận hành và giám sát qua bảng điều khiển Telegram (đổi chế độ làm việc/nghỉ/tự do, xem lại các câu hỏi chuyên môn chưa truy xuất được dữ liệu để tự phản hồi). (2) Discord Chatbot - cùng cơ chế truy xuất dữ liệu (RAG) + AI Agent như Zalo Chatbot, xây dựng thêm chế độ quản trị nhóm cộng đồng Discord.",
+      "desc_en": "Two self-built chatbots on n8n: (1) Zalo Chatbot - ingests input data so the bot can retrieve and answer accurately within the data's scope; out-of-scope questions are routed to an AI Agent (Google Gemini Flash); operated and monitored through a Telegram control panel (switch between working/sleep/free mode, review unanswered domain questions to reply manually). (2) Discord Chatbot - the same RAG + AI Agent mechanism as the Zalo Chatbot, plus a Discord community-moderation mode.",
+      "brief_vi": "Đề bài: Cần một trợ lý ảo tự động phản hồi khách hàng/cộng đồng trên Zalo và Discord, vừa truy xuất đúng dữ liệu nội bộ vừa xử lý linh hoạt các câu hỏi ngoài phạm vi dữ liệu. Cách làm: Tự xây dựng 2 chatbot bằng n8n, tích hợp Google Gemini (AI Agent) và Supabase Vector Store để truy xuất dữ liệu (RAG), có bảng điều khiển qua Telegram/Discord để đổi chế độ hoạt động và xem câu hỏi tồn đọng. Sản phẩm: Zalo Chatbot trả lời tự động dựa trên dữ liệu đã nạp, câu hỏi ngoài phạm vi được AI Agent (Gemini Flash) xử lý; Discord Chatbot có thêm chế độ quản trị nhóm cộng đồng.",
+      "brief_en": "Brief: Needed a virtual assistant to automatically respond to customers/community on Zalo and Discord, retrieving accurate internal data while flexibly handling out-of-scope questions. Approach: Self-built 2 chatbots with n8n, integrating Google Gemini (AI Agent) and Supabase Vector Store for data retrieval (RAG), with a Telegram/Discord control panel to switch operating modes and review pending questions. Output: Zalo Chatbot auto-replies based on ingested data, with out-of-scope questions handled by an AI Agent (Gemini Flash); Discord Chatbot adds a community-moderation mode.",
+      "slideCaptions_vi": [
+        "Xây dựng workflow Zalo Chatbot trên n8n - truy xuất dữ liệu (RAG) và AI Agent Gemini",
+        "Xây dựng workflow Discord Chatbot trên n8n - thêm chế độ quản trị nhóm cộng đồng",
+        "Bảng điều khiển Discord Chatbot qua Telegram - đổi chế độ, xem câu hỏi tồn đọng",
+        "Bảng điều khiển Zalo Chatbot qua Telegram - theo dõi trạng thái, chế độ Lao động/Ngủ",
+        "Zalo Chatbot trả lời tự động câu hỏi chuyên môn qua Telegram",
+        "Discord Chatbot trả lời câu hỏi trong kênh cộng đồng"
+      ],
+      "slideCaptions_en": [
+        "Zalo Chatbot workflow built on n8n - data retrieval (RAG) and Gemini AI Agent",
+        "Discord Chatbot workflow built on n8n - adds a community-moderation mode",
+        "Discord Chatbot control panel via Telegram - switch modes, view pending questions",
+        "Zalo Chatbot control panel via Telegram - status tracking, Working/Sleep modes",
+        "Zalo Chatbot auto-answering a domain question via Telegram",
+        "Discord Chatbot replying to a question in the community channel"
+      ],
+      "canvaUrls": []
     }
   ]
 }
